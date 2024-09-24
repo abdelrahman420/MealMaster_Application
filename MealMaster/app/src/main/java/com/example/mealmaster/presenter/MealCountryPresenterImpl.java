@@ -1,4 +1,4 @@
 package com.example.mealmaster.presenter;
 
-public class MealCountryPresenter {
+public class MealCountryPresenterImpl {
 }
