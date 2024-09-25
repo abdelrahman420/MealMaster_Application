@@ -6,10 +6,12 @@ import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 
+import com.example.mealmaster.model.database.DTOs.MealDTO;
+
 import java.util.List;
 
 @Dao
-public interface MealDAO {
+public interface FavMealDAO {
     @Insert
     void insertMeal(MealDTO meal);
 

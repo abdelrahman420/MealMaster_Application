@@ -4,20 +4,22 @@ import android.content.Context;
 
 import androidx.lifecycle.LiveData;
 
+import com.example.mealmaster.model.database.DTOs.MealDTO;
+
 import java.util.List;
 
 public class LocalDataSourceImpl implements LocalDataSource{
 
         private Context context;
-        private MealDAO mealDAO;
+        private FavMealDAO favMealDAO;
         private LiveData<List<MealDTO>> storedMeals;
         private static LocalDataSource localDataSource = null;
 
         private LocalDataSourceImpl(Context context) {
             this.context = context;
             MealDatabase db = MealDatabase.getDatabase(this.context.getApplicationContext());
-            mealDAO = db.mealsDao();
-            storedMeals = (LiveData<List<MealDTO>>) mealDAO.getAllMeals();
+            favMealDAO = db.mealsDao();
+            storedMeals = (LiveData<List<MealDTO>>) favMealDAO.getAllMeals();
         }
 
         public static LocalDataSource getInstance(Context context) {
@@ -37,7 +39,7 @@ public class LocalDataSourceImpl implements LocalDataSource{
         new Thread(new Runnable() {
             @Override
             public void run() {
-                mealDAO.deleteMeal(meal);
+                favMealDAO.deleteMeal(meal);
             }
         }).start();
     }
@@ -47,7 +49,7 @@ public class LocalDataSourceImpl implements LocalDataSource{
         new Thread(new Runnable() {
             @Override
             public void run() {
-                mealDAO.insertMeal(meal);
+                favMealDAO.insertMeal(meal);
             }
         }).start();
     }

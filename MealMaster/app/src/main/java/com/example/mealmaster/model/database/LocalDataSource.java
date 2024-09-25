@@ -2,6 +2,8 @@ package com.example.mealmaster.model.database;
 
 import androidx.lifecycle.LiveData;
 
+import com.example.mealmaster.model.database.DTOs.MealDTO;
+
 import java.util.List;
 
 public interface LocalDataSource {

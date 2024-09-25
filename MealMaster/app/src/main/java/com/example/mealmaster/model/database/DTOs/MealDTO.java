@@ -1,4 +1,4 @@
-package com.example.mealmaster.model.database;
+package com.example.mealmaster.model.database.DTOs;
 
 import androidx.annotation.NonNull;
 import androidx.room.Entity;
