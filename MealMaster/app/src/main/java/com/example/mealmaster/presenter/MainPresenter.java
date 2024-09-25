@@ -25,24 +25,20 @@ public class MainPresenter {
     public void onNavigationItemSelected(int itemId) {
         Fragment selectedFragment = null;
 
-        if(itemId == R.id.fav)
-        {
+        if (itemId == R.id.fav) {
             selectedFragment = new FavFragment();
-        }
-        else if (itemId == R.id.search)
-        {
+        } else if (itemId == R.id.search) {
             selectedFragment = new SearchFragment();
-        }
-        else if(itemId == R.id.home)
-        {
+        } else if (itemId == R.id.home) {
             selectedFragment = new HomeFragment();
-        }
-        else if (itemId == R.id.plan)
-        {
+        } else if (itemId == R.id.plan) {
             selectedFragment = new PlannerFragment();
+        } else {
         }
-        else
-        {}
+        // If a fragment is selected, instruct the view to replace the fragment
+        if (selectedFragment != null) {
+            view.replaceFragment(selectedFragment);
+        }
         }
 }
 

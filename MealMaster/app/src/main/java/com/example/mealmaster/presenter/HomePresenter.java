@@ -13,15 +13,18 @@ import com.example.mealmaster.view.fragments.HomeFragmentView;
 
 import java.util.List;
 
-public class CategoriesPresenter implements NetworkCall{
+public class HomePresenter implements NetworkCall{
     private RemoteDataSource remoteDataSource;
     HomeFragmentView view;
-    public CategoriesPresenter(HomeFragmentView view) {
+    public HomePresenter(HomeFragmentView view) {
         remoteDataSource = RemoteDataSourceImpl.getInstance();
         this.view =view;
     }
     public void loadCategories() {
         remoteDataSource.allCategories(this); // Fetching categories
+    }
+    public void loadMealOfTheDay() {
+        remoteDataSource.lookupRandomMeal(this); // Fetching the meal of the day
     }
     @Override
     public void onSuccessAllMealCategories(List<CategoriesDTO> categoriesList) {
@@ -39,7 +42,7 @@ public class CategoriesPresenter implements NetworkCall{
 
     @Override
     public void OnLookupRandomMealSuccess(List<MealDTO> meal) {
-
+        view.displayTodaysMeal(meal);
     }
 
 

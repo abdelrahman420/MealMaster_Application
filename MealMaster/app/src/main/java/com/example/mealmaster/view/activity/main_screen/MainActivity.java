@@ -31,7 +31,9 @@ public class MainActivity extends AppCompatActivity implements MainScreenView{
         presenter = new MainPresenter(this, this);
         replaceFragment(new HomeFragment());
 
-        binding.navView.setOnItemSelectedListener(item -> {
+
+        binding.navView.setOnItemSelectedListener(item ->
+        {
             presenter.onNavigationItemSelected(item.getItemId());
             return true;
         });
