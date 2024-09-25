@@ -22,10 +22,10 @@
             android:name=".view.activity.PlannerActivity"
             android:exported="false" />
         <activity
-            android:name=".view.activity.SplashActivity"
+            android:name=".view.activity.MainActivity"
             android:exported="false" />
         <activity
-            android:name=".view.activity.MainActivity"
+            android:name=".view.activity.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
