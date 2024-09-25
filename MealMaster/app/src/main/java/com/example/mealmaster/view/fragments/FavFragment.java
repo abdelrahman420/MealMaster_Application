@@ -12,10 +12,10 @@ import com.example.mealmaster.R;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link CountryFragment#newInstance} factory method to
+ * Use the {@link FavFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class CountryFragment extends Fragment {
+public class FavFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -26,7 +26,7 @@ public class CountryFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public CountryFragment() {
+    public FavFragment() {
         // Required empty public constructor
     }
 
@@ -39,8 +39,8 @@ public class CountryFragment extends Fragment {
      * @return A new instance of fragment CountryFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static CountryFragment newInstance(String param1, String param2) {
-        CountryFragment fragment = new CountryFragment();
+    public static FavFragment newInstance(String param1, String param2) {
+        FavFragment fragment = new FavFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -61,6 +61,6 @@ public class CountryFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_country, container, false);
+        return inflater.inflate(R.layout.fragment_fav, container, false);
     }
 }

@@ -16,16 +16,10 @@
             android:name=".view.activity.MealDetailsActivity"
             android:exported="false" />
         <activity
-            android:name=".view.activity.FavoriteActivity"
+            android:name=".view.activity.main_screen.MainActivity"
             android:exported="false" />
         <activity
-            android:name=".view.activity.PlannerActivity"
-            android:exported="false" />
-        <activity
-            android:name=".view.activity.MainActivity"
-            android:exported="false" />
-        <activity
-            android:name=".view.activity.SplashActivity"
+            android:name=".view.activity.splah_screen.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

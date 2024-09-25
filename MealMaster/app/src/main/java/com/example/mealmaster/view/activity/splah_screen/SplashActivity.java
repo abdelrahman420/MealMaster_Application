@@ -1,21 +1,18 @@
-package com.example.mealmaster.view.activity;
+package com.example.mealmaster.view.activity.splah_screen;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import com.example.mealmaster.R;
 import com.example.mealmaster.presenter.SplashScreenPresenter;
+import com.example.mealmaster.view.activity.main_screen.MainActivity;
 
-public class SplashActivity extends AppCompatActivity implements SplashScreenView{
+public class SplashActivity extends AppCompatActivity implements SplashScreenView {
 
     private static final String TAG = "SplashActivity";
     private SplashScreenPresenter presenter;

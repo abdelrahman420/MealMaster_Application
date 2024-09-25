@@ -2,7 +2,7 @@ package com.example.mealmaster.presenter;
 
 import android.os.Handler;
 
-import com.example.mealmaster.view.activity.SplashScreenView;
+import com.example.mealmaster.view.activity.splah_screen.SplashScreenView;
 
 public class SplashScreenPresenter {
 

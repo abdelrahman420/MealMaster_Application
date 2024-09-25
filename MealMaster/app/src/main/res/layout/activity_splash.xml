@@ -5,32 +5,33 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.activity.SplashActivity"
-    android:background="@color/white">
+    android:background="#ACEC9E"
+    tools:context=".view.activity.splah_screen.SplashActivity">
 
-<com.airbnb.lottie.LottieAnimationView
-android:id="@+id/lottieAnimationView"
-android:layout_width="match_parent"
-android:layout_height="wrap_content"
-app:layout_constraintBottom_toBottomOf="parent"
-app:layout_constraintEnd_toEndOf="parent"
-app:layout_constraintStart_toStartOf="parent"
-app:layout_constraintTop_toTopOf="parent"
-app:layout_constraintVertical_bias="0.4"
-app:lottie_autoPlay="true"
-app:lottie_loop="false"
-app:lottie_rawRes="@raw/mealmaster"
-android:layout_margin="16dp" />
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottieAnimationView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:background="#ADEC9F"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.4"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="false"
+        app:lottie_rawRes="@raw/mealmaster" />
 
-<TextView
-android:id="@+id/txtSplash"
-android:layout_width="wrap_content"
-android:layout_height="wrap_content"
-android:layout_marginTop="20dp"
-android:text="Welcome to MealMaster!"
-android:textSize="26sp"
-app:layout_constraintEnd_toEndOf="parent"
-app:layout_constraintStart_toStartOf="parent"
-app:layout_constraintTop_toBottomOf="@id/lottieAnimationView" />
+    <TextView
+        android:id="@+id/txtSplash"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Welcome to MealMaster!"
+        android:textSize="26sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/lottieAnimationView" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
