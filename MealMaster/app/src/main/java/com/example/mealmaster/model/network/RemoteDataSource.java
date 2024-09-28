@@ -6,7 +6,6 @@ public interface RemoteDataSource {
     void lookupMealById(String mealId, NetworkCall networkCallBack);
     void lookupRandomMeal(NetworkCall networkCallBack);
     void allCategories(NetworkCall networkCallback);
-    void listAllCategories(NetworkCall networkCallback);
     void listAllAreas(NetworkCall networkCallback);
     void listAllIngredients(NetworkCall networkCallback);
     void filterMealsByCategory(String category, NetworkCall networkCallback);

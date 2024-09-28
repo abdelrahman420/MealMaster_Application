@@ -7,7 +7,7 @@ import com.example.mealmaster.model.database.DTOs.MealDTO;
 import java.util.List;
 
 public interface LocalDataSource {
-    LiveData<List<MealDTO>> getStoreData();
+    LiveData<List<MealDTO>> getStoredData();
 
     void delete(MealDTO meal);
 

@@ -13,9 +13,6 @@ public class SplashScreenPresenter {
             this.view = view;
         }
 
-        public void setSplashText(String text) {
-            view.displaySplashText(text);
-        }
 
         public void startSplashDelay() {
             new Handler().postDelayed(new Runnable() {

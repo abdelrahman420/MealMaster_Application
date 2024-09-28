@@ -1,15 +1,10 @@
 package com.example.mealmaster.model.network;
 
-import com.example.mealmaster.model.database.DTOs.IngredientListDTO;
-import com.example.mealmaster.model.database.DTOs.MealDTO;
 import com.example.mealmaster.model.network.Responses.AreaListResponse;
-import com.example.mealmaster.model.network.Responses.CategoryListResponse;
 import com.example.mealmaster.model.network.Responses.CategoryResponse;
 import com.example.mealmaster.model.network.Responses.FilterMealResponse;
 import com.example.mealmaster.model.network.Responses.IngredientListResponse;
 import com.example.mealmaster.model.network.Responses.MealResponse;
-
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -37,10 +32,6 @@ public interface MealApiServices {
     @GET("categories.php")
     Call<CategoryResponse> listAllCategories();
 
-    // List all Categories, Area, Ingredients
-    @GET("list.php?c=list")
-    Call<CategoryListResponse> listCategories();
-
     @GET("list.php?a=list")
     Call<AreaListResponse> listAllAreas();
 
@@ -58,7 +49,5 @@ public interface MealApiServices {
     // Filter by Area
     @GET("filter.php")
     Call<FilterMealResponse> filterByArea(@Query("a") String area);
-
-
 
 }

@@ -17,9 +17,9 @@ public class LocalDataSourceImpl implements LocalDataSource{
 
         private LocalDataSourceImpl(Context context) {
             this.context = context;
-            MealDatabase db = MealDatabase.getDatabase(this.context.getApplicationContext());
-            favMealDAO = db.mealsDao();
-            storedMeals = (LiveData<List<MealDTO>>) favMealDAO.getAllMeals();
+            AppDatabase db = AppDatabase.getInstance(this.context.getApplicationContext());
+            favMealDAO = db.getFavMealDAO();
+            storedMeals = (LiveData<List<MealDTO>>) favMealDAO.getFavMeals();
         }
 
         public static LocalDataSource getInstance(Context context) {
@@ -29,10 +29,11 @@ public class LocalDataSourceImpl implements LocalDataSource{
             return localDataSource;
         }
 
-        @Override
-        public LiveData<List<MealDTO>> getStoreData() {
+    @Override
+    public LiveData<List<MealDTO>> getStoredData() {
+
             return storedMeals;
-        }
+    }
 
     @Override
     public void delete(MealDTO meal) {
@@ -53,6 +54,5 @@ public class LocalDataSourceImpl implements LocalDataSource{
             }
         }).start();
     }
-
-
 }
+

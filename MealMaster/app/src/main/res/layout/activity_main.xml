@@ -17,7 +17,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/bottom_nav_menu"
-        android:background="?android:attr/windowBackground" />
+        android:background="#F1F1F1" />
 
     <!-- FrameLayout for dynamic fragment/activity replacement -->
     <FrameLayout

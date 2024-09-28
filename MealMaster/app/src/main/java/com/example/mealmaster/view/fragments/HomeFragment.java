@@ -19,6 +19,10 @@ import com.bumptech.glide.Glide;
 import com.example.mealmaster.R;
 import com.example.mealmaster.model.database.DTOs.CategoriesDTO;
 import com.example.mealmaster.model.database.DTOs.MealDTO;
+import com.example.mealmaster.model.database.LocalDataSourceImpl;
+import com.example.mealmaster.model.network.RemoteDataSourceImpl;
+import com.example.mealmaster.model.repsitory.MealRepository;
+import com.example.mealmaster.model.repsitory.MealRepositoryImpl;
 import com.example.mealmaster.presenter.HomePresenter;
 import com.example.mealmaster.view.adapter.CategoryAdapter;
 
@@ -32,12 +36,17 @@ public class HomeFragment extends Fragment implements HomeFragmentView {
     private HomePresenter presenter;
     private TextView txtMeal;
     private ImageView imgTodaysMeal;
+    //private MealRepository mealRepository;
 
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        presenter = new HomePresenter(this);
+        presenter = new HomePresenter(this,
+                MealRepositoryImpl.getInstance(RemoteDataSourceImpl.getInstance(),
+                        LocalDataSourceImpl.getInstance(getContext())));
+//        mealRepository = MealRepositoryImpl.getInstance(Rem);
+//        presenter = new HomePresenter(this,mealRepository);
     }
 
     @Override

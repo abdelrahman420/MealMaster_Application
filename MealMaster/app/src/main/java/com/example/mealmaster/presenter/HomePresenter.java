@@ -2,29 +2,29 @@ package com.example.mealmaster.presenter;
 
 import com.example.mealmaster.model.database.DTOs.AreaListDTO;
 import com.example.mealmaster.model.database.DTOs.CategoriesDTO;
-import com.example.mealmaster.model.database.DTOs.CategoryListDTO;
 import com.example.mealmaster.model.database.DTOs.FilterMealDTO;
 import com.example.mealmaster.model.database.DTOs.IngredientListDTO;
 import com.example.mealmaster.model.database.DTOs.MealDTO;
 import com.example.mealmaster.model.network.RemoteDataSource;
 import com.example.mealmaster.model.network.RemoteDataSourceImpl;
 import com.example.mealmaster.model.network.NetworkCall;
+import com.example.mealmaster.model.repsitory.MealRepository;
 import com.example.mealmaster.view.fragments.HomeFragmentView;
 
 import java.util.List;
 
 public class HomePresenter implements NetworkCall{
-    private RemoteDataSource remoteDataSource;
+    private MealRepository mealRepository;
     HomeFragmentView view;
-    public HomePresenter(HomeFragmentView view) {
-        remoteDataSource = RemoteDataSourceImpl.getInstance();
+    public HomePresenter(HomeFragmentView view,MealRepository mealRepository) {
+        this.mealRepository = mealRepository;
         this.view =view;
     }
     public void loadCategories() {
-        remoteDataSource.allCategories(this); // Fetching categories
+        mealRepository._allCategories(this);
     }
     public void loadMealOfTheDay() {
-        remoteDataSource.lookupRandomMeal(this); // Fetching the meal of the day
+        mealRepository._lookupRandomMeal(this);
     }
     @Override
     public void onSuccessAllMealCategories(List<CategoriesDTO> categoriesList) {
@@ -46,11 +46,6 @@ public class HomePresenter implements NetworkCall{
     }
 
 
-
-    @Override
-    public void onSuccessListCategories(List<CategoryListDTO> categoriesList) {
-
-    }
 
     @Override
     public void onSuccessListArea(List<AreaListDTO> AreaList) {

@@ -6,7 +6,6 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 
 import com.example.mealmaster.model.network.Responses.AreaListResponse;
-import com.example.mealmaster.model.network.Responses.CategoryListResponse;
 import com.example.mealmaster.model.network.Responses.CategoryResponse;
 import com.example.mealmaster.model.network.Responses.FilterMealResponse;
 import com.example.mealmaster.model.network.Responses.IngredientListResponse;
@@ -164,25 +163,6 @@ public class RemoteDataSourceImpl implements RemoteDataSource {
         });
     }
 
-    @Override
-    public void listAllCategories(NetworkCall networkCallback) {
-        mealServices.listCategories().enqueue(new Callback<CategoryListResponse>() {
-            @Override
-            public void onResponse(Call<CategoryListResponse> call, Response<CategoryListResponse> response) {
-                if (response.body() != null && response.body().getCategoryList() != null) {
-                    Log.i(TAG, "Categories found: " + response.body().getCategoryList().size());
-                    networkCallback.onSuccessListCategories(response.body().getCategoryList());
-                } else {
-                    networkCallback.onFailureResult("No categories found.");
-                }
-            }
-
-            @Override
-            public void onFailure(Call<CategoryListResponse> call, Throwable throwable) {
-                networkCallback.onFailureResult(throwable.getMessage());
-            }
-        });
-    }
 
 
     @Override

@@ -17,7 +17,6 @@ public class SplashActivity extends AppCompatActivity implements SplashScreenVie
     private static final String TAG = "SplashActivity";
     private SplashScreenPresenter presenter;
 
-    private TextView txtSplash;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,10 +25,6 @@ public class SplashActivity extends AppCompatActivity implements SplashScreenVie
         setContentView(R.layout.activity_splash);
         // Initialize the presenter
         presenter = new SplashScreenPresenter(this);
-
-        // Initialize the UI component
-        txtSplash = findViewById(R.id.txtSplash);
-        txtSplash.setText("Meal Master");
         presenter.startSplashDelay();
     }
 
@@ -39,9 +34,5 @@ public class SplashActivity extends AppCompatActivity implements SplashScreenVie
         startActivity(intent);
         finish();
 
-    }
-    @Override
-    public void displaySplashText(String text) {
-        txtSplash.setText(text);
     }
 }
