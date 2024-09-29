@@ -1,10 +1,12 @@
-package com.example.mealmaster.view.fragments;
+package com.example.mealmaster.view.fragments.Home;
 
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -21,32 +23,27 @@ import com.example.mealmaster.model.database.DTOs.CategoriesDTO;
 import com.example.mealmaster.model.database.DTOs.MealDTO;
 import com.example.mealmaster.model.database.LocalDataSourceImpl;
 import com.example.mealmaster.model.network.RemoteDataSourceImpl;
-import com.example.mealmaster.model.repsitory.MealRepository;
 import com.example.mealmaster.model.repsitory.MealRepositoryImpl;
 import com.example.mealmaster.presenter.HomePresenter;
 import com.example.mealmaster.view.adapter.CategoryAdapter;
+import com.example.mealmaster.view.fragments.MealDetails.MealDetailsFragment;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class HomeFragment extends Fragment implements HomeFragmentView {
+public class HomeFragment extends Fragment implements HomeFragmentView ,OnMealCLickListener{
 
     private RecyclerView recyclerView;
     private CategoryAdapter categoryAdapter;
     private HomePresenter presenter;
     private TextView txtMeal;
     private ImageView imgTodaysMeal;
-    //private MealRepository mealRepository;
-
+    private MealDTO todaysMeal;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        presenter = new HomePresenter(this,
-                MealRepositoryImpl.getInstance(RemoteDataSourceImpl.getInstance(),
-                        LocalDataSourceImpl.getInstance(getContext())));
-//        mealRepository = MealRepositoryImpl.getInstance(Rem);
-//        presenter = new HomePresenter(this,mealRepository);
+        presenter = new HomePresenter(this, MealRepositoryImpl.getInstance(RemoteDataSourceImpl.getInstance(), LocalDataSourceImpl.getInstance(getContext())),this);
     }
 
     @Override
@@ -60,12 +57,22 @@ public class HomeFragment extends Fragment implements HomeFragmentView {
 
 
         recyclerView = view.findViewById(R.id.recyclerview);
-        txtMeal = view.findViewById(R.id.txtMeal);
+        txtMeal = view.findViewById(R.id.txtTodaysMeal);
         imgTodaysMeal = view.findViewById(R.id.imgTodaysMeal);
 
         categoryAdapter = new CategoryAdapter(new ArrayList<>(), getContext());
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(categoryAdapter);
+        imgTodaysMeal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (todaysMeal != null) {  // Add a null check here
+                    presenter.navigateToMealDetails(todaysMeal);
+                } else {
+                    Toast.makeText(getContext(), "Meal is not available", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
 
         presenter.loadCategories();
         presenter.loadMealOfTheDay();
@@ -90,10 +97,25 @@ public class HomeFragment extends Fragment implements HomeFragmentView {
             txtMeal.setText("Meal of the Day not available");
             imgTodaysMeal.setImageResource(R.drawable.ic_launcher_background);
         }
+        todaysMeal = meal.get(0);
     }
 
     @Override
     public void showError(String message) {
         Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
     }
+
+    @Override
+    public void onMealClick(MealDTO meal) {
+        MealDetailsFragment mealDetailsFragment = new MealDetailsFragment();
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("meal", meal);
+        mealDetailsFragment.setArguments(bundle);
+        FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.frameLayout, mealDetailsFragment);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
+    }
+
 }

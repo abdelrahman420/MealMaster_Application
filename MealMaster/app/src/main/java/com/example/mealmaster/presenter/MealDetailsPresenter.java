@@ -1,5 +1,8 @@
 package com.example.mealmaster.presenter;
 
+import android.os.Bundle;
+
+
 import com.example.mealmaster.model.database.DTOs.AreaListDTO;
 import com.example.mealmaster.model.database.DTOs.CategoriesDTO;
 import com.example.mealmaster.model.database.DTOs.FilterMealDTO;
@@ -8,46 +11,34 @@ import com.example.mealmaster.model.database.DTOs.IngredientListDTO;
 import com.example.mealmaster.model.database.DTOs.MealDTO;
 import com.example.mealmaster.model.network.NetworkCall;
 import com.example.mealmaster.model.repsitory.MealRepository;
-import com.example.mealmaster.view.fragments.Home.HomeFragmentView;
-import com.example.mealmaster.view.fragments.Home.OnMealCLickListener;
+import com.example.mealmaster.view.fragments.MealDetails.MealDetailsView;
 
 import java.util.List;
 
-public class HomePresenter implements NetworkCall{
+public class MealDetailsPresenter implements NetworkCall {
+
     private MealRepository mealRepository;
-    HomeFragmentView view;
-    private OnMealCLickListener onMealCLickListener;
-    public HomePresenter(HomeFragmentView view, MealRepository mealRepository, OnMealCLickListener onMealCLickListener) {
+    private MealDetailsView view;
+    private   MealDTO meal;
+    public MealDetailsPresenter(MealDetailsView view,MealRepository mealRepository) {
+        this.view = view;
         this.mealRepository = mealRepository;
-        this.view =view;
-        this.onMealCLickListener = onMealCLickListener;
     }
-    public void loadCategories() {
-        mealRepository._allCategories(this);
+    public void loadMealDetails(Bundle arguments)
+    {
+        meal = (MealDTO) arguments.getSerializable("meal");
+        view.showMealDetails(meal);
     }
-    public void loadMealOfTheDay() {
-        mealRepository._lookupRandomMeal(this);
+    @Override
+    public void OnGetMealSuccess(List<MealDTO> meals) {
+
     }
 
-    public void navigateToMealDetails(MealDTO meal) {
-        onMealCLickListener.onMealClick(meal);
-    }
     @Override
     public void onSuccessAllMealCategories(List<CategoriesDTO> categoriesList) {
-        view.displayCategories(categoriesList);
+
     }
 
-
-    @Override
-    public void onFailureResult(String errMsg) {
-        view.showError(errMsg);
-    }
-
-
-    @Override
-    public void OnGetMealSuccess(List<MealDTO> meal) {
-        view.displayTodaysMeal(meal);
-    }
 
     @Override
     public void onSuccessListArea(List<AreaListDTO> AreaList) {
@@ -64,5 +55,8 @@ public class HomePresenter implements NetworkCall{
 
     }
 
+    @Override
+    public void onFailureResult(String errMsg) {
 
+    }
 }

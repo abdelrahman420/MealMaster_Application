@@ -1,4 +1,4 @@
-package com.example.mealmaster.view.fragments;
+package com.example.mealmaster.view.fragments.Home;
 
 import com.example.mealmaster.model.database.DTOs.CategoriesDTO;
 import com.example.mealmaster.model.database.DTOs.MealDTO;
@@ -9,4 +9,5 @@ public interface HomeFragmentView {
     void displayCategories(List<CategoriesDTO> categories);
     void showError(String message);
     void displayTodaysMeal(List<MealDTO> meal);
+
 }

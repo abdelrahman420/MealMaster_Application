@@ -17,6 +17,6 @@
         />
     <item
         android:id="@+id/plan"
-        android:icon="@drawable/ic_weekly_plan"
+        android:icon="@drawable/ic_plan"
         android:title="plan" />
 </menu>

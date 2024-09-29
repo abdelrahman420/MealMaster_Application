@@ -5,10 +5,9 @@ import android.content.Context;
 import androidx.fragment.app.Fragment;
 
 import com.example.mealmaster.R;
-import com.example.mealmaster.view.activity.main_screen.MainActivity;
 import com.example.mealmaster.view.activity.main_screen.MainScreenView;
 import com.example.mealmaster.view.fragments.FavFragment;
-import com.example.mealmaster.view.fragments.HomeFragment;
+import com.example.mealmaster.view.fragments.Home.HomeFragment;
 import com.example.mealmaster.view.fragments.PlannerFragment;
 import com.example.mealmaster.view.fragments.SearchFragment;
 

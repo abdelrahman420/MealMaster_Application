@@ -60,10 +60,9 @@ dependencies {
     //Lotie
     implementation("com.airbnb.android:lottie:6.5.2")
     implementation ("pl.droidsonroids.gif:android-gif-drawable:1.2.22")
-    //navigation fragment
-    implementation ("androidx.navigation:navigation-fragment-ktx:2.8.1")
-    implementation ("androidx.navigation:navigation-ui-ktx:2.8.1")
-
-
+    //circle image
+    implementation ("de.hdodenhof:circleimageview:3.1.0")
+    //youtube player
+    implementation ("com.pierfrancescosoffritti.androidyoutubeplayer:core:12.1.0")
 
 }

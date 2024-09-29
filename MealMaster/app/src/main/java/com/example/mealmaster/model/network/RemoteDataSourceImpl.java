@@ -5,11 +5,18 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
+
+import com.example.mealmaster.model.database.DTOs.IngredientDTO;
+import com.example.mealmaster.model.database.DTOs.MealDTO;
 import com.example.mealmaster.model.network.Responses.AreaListResponse;
 import com.example.mealmaster.model.network.Responses.CategoryResponse;
 import com.example.mealmaster.model.network.Responses.FilterMealResponse;
 import com.example.mealmaster.model.network.Responses.IngredientListResponse;
 import com.example.mealmaster.model.network.Responses.MealResponse;
+
+
+import java.util.ArrayList;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -19,7 +26,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RemoteDataSourceImpl implements RemoteDataSource {
     private static final String TAG = "MealsClient";
-    private static final String BASE_URL = "https://www.themealdb.com/api/json/v1/1/";
+    private static final String BASE_URL = "https://www.themealdb.com/";
     private static RemoteDataSource client = null;
     MealApiServices mealServices;
 
@@ -40,20 +47,16 @@ public class RemoteDataSourceImpl implements RemoteDataSource {
         return client;
     }
 
-
     @Override
     public void searchMealsByName(String mealName, NetworkCall networkCallBack) {
 
         mealServices.searchMealByName(mealName).enqueue(new Callback<MealResponse>() {
             @Override
             public void onResponse(Call<MealResponse> call, Response<MealResponse> response) {
-                if (response.body() != null && response.body().getMeals() != null)
-                {
+                if (response.body() != null && response.body().getMeals() != null) {
                     Log.i(TAG, "Meals Found: " + response.body().getMeals());
-                    networkCallBack.OnSearchMealSuccess(response.body().getMeals());
-                }
-                else
-                {
+                    networkCallBack.OnGetMealSuccess(response.body().getMeals());
+                } else {
                     Log.i(TAG, "No Meals Found: ");
                     networkCallBack.onFailureResult("No meals Found");
                 }
@@ -71,13 +74,10 @@ public class RemoteDataSourceImpl implements RemoteDataSource {
         mealServices.listMealsByFirstLetter(firstLetter).enqueue(new Callback<MealResponse>() {
             @Override
             public void onResponse(Call<MealResponse> call, Response<MealResponse> response) {
-                if (response.body() != null && response.body().getMeals() != null)
-                {
+                if (response.body() != null && response.body().getMeals() != null) {
                     Log.i(TAG, "Meals Found: " + response.body().getMeals());
-                    networkCallBack.OnSearchMealSuccess(response.body().getMeals());
-                }
-                else
-                {
+                    networkCallBack.OnGetMealSuccess(response.body().getMeals());
+                } else {
                     Log.i(TAG, "No Meals Found: ");
                     networkCallBack.onFailureResult("No meals Found");
                 }
@@ -97,13 +97,10 @@ public class RemoteDataSourceImpl implements RemoteDataSource {
         mealServices.findMealById(mealId).enqueue(new Callback<MealResponse>() {
             @Override
             public void onResponse(Call<MealResponse> call, Response<MealResponse> response) {
-                if (response.body() != null && response.body().getMeals() != null)
-                {
+                if (response.body() != null && response.body().getMeals() != null) {
                     Log.i(TAG, "Meal Found: " + response.body().getMeals());
-                    networkCallBack.OnSearchMealSuccess(response.body().getMeals());
-                }
-                else
-                {
+                    networkCallBack.OnGetMealSuccess(response.body().getMeals());
+                } else {
                     Log.i(TAG, "No Meals Found: ");
                     networkCallBack.onFailureResult("No meals Found");
                 }
@@ -123,13 +120,10 @@ public class RemoteDataSourceImpl implements RemoteDataSource {
         mealServices.getRandomMeal().enqueue(new Callback<MealResponse>() {
             @Override
             public void onResponse(Call<MealResponse> call, Response<MealResponse> response) {
-                if (response.body() != null && response.body().getMeals() != null)
-                {
+                if (response.body() != null && response.body().getMeals() != null) {
                     Log.i(TAG, "Meal Found: " + response.body().getMeals());
-                    networkCallBack.OnLookupRandomMealSuccess(response.body().getMeals());
-                }
-                else
-                {
+                    networkCallBack.OnGetMealSuccess(response.body().getMeals());
+                } else {
                     Log.i(TAG, "No Meals Found: ");
                     networkCallBack.onFailureResult("No meals Found");
                 }
@@ -162,7 +156,6 @@ public class RemoteDataSourceImpl implements RemoteDataSource {
             }
         });
     }
-
 
 
     @Override
@@ -270,7 +263,6 @@ public class RemoteDataSourceImpl implements RemoteDataSource {
         });
 
     }
-
 }
 
 
