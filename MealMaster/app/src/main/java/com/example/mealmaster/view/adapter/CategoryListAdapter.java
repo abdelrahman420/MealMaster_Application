@@ -15,18 +15,18 @@ import com.example.mealmaster.model.database.DTOs.CategoriesDTO;
 
 import java.util.List;
 
-public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHolder>{
+public class CategoryListAdapter extends RecyclerView.Adapter<CategoryListAdapter.ViewHolder>{
 
         private List<CategoriesDTO> categories;
         private Context context;
-        public CategoryAdapter(List<CategoriesDTO> categories, Context context) {
+        public CategoryListAdapter(List<CategoriesDTO> categories, Context context) {
             this.categories = categories;
             this.context = context;
         }
 
 
         @Override
-        public CategoryAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        public CategoryListAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_category, parent, false);
             return new ViewHolder(view);
         }
@@ -45,7 +45,6 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
                     .load(category.getStrCategoryThumb())  // URL of the image
                     .placeholder(R.drawable.ic_launcher_background)  // Placeholder while loading
                     .into(holder.imageView);  // Target ImageView to load into
-
         }
 
         @Override

@@ -25,7 +25,7 @@ import com.example.mealmaster.model.database.LocalDataSourceImpl;
 import com.example.mealmaster.model.network.RemoteDataSourceImpl;
 import com.example.mealmaster.model.repsitory.MealRepositoryImpl;
 import com.example.mealmaster.presenter.HomePresenter;
-import com.example.mealmaster.view.adapter.CategoryAdapter;
+import com.example.mealmaster.view.adapter.CategoryListAdapter;
 import com.example.mealmaster.view.fragments.meal_details.MealDetailsFragment;
 
 import java.util.ArrayList;
@@ -34,7 +34,7 @@ import java.util.List;
 public class HomeFragment extends Fragment implements HomeFragmentView ,OnMealCLickListener{
 
     private RecyclerView recyclerView;
-    private CategoryAdapter categoryAdapter;
+    private CategoryListAdapter categoryListAdapter;
     private HomePresenter presenter;
     private TextView txtMeal;
     private ImageView imgTodaysMeal;
@@ -60,9 +60,9 @@ public class HomeFragment extends Fragment implements HomeFragmentView ,OnMealCL
         txtMeal = view.findViewById(R.id.txtTodaysMeal);
         imgTodaysMeal = view.findViewById(R.id.imgTodaysMeal);
 
-        categoryAdapter = new CategoryAdapter(new ArrayList<>(), getContext());
+        categoryListAdapter = new CategoryListAdapter(new ArrayList<>(), getContext());
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerView.setAdapter(categoryAdapter);
+        recyclerView.setAdapter(categoryListAdapter);
         imgTodaysMeal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -80,7 +80,7 @@ public class HomeFragment extends Fragment implements HomeFragmentView ,OnMealCL
 
     @Override
     public void displayCategories(List<CategoriesDTO> categories) {
-        categoryAdapter.updateCategories(categories);
+        categoryListAdapter.updateCategories(categories);
     }
 
     @Override
