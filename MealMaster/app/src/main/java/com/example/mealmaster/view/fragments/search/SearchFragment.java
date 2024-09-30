@@ -1,4 +1,4 @@
-package com.example.mealmaster.view.fragments;
+package com.example.mealmaster.view.fragments.search;
 
 import android.os.Bundle;
 

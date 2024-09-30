@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.fragments.MealDetails.MealDetailsFragment">
+    tools:context=".view.fragments.meal_details.MealDetailsFragment">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -81,47 +81,50 @@
                 app:srcCompat="@drawable/ic_launcher_background" />
 
             <!-- TextView next to Icon (textView4) -->
-            <TextView
-                android:id="@+id/txtCountry"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="10dp"
-                android:text="TextView"
-                android:textColor="@color/black"
-                android:textSize="20sp"
-                app:layout_constraintStart_toEndOf="@id/imgCountry"
-                app:layout_constraintTop_toTopOf="@id/imgCountry" />
 
             <!-- New TextView between imgCountry and YouTubePlayerView -->
 
             <!-- YouTube Player, constrained below the new TextView -->
 
             <!-- Additional TextView (textView3) below YouTube player -->
+
+            <TextView
+                android:id="@+id/txtCountry"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="35dp"
+                android:layout_marginTop="20dp"
+                android:text="TextView"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imgCountry" />
+
             <TextView
                 android:id="@+id/txtMealCategory"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginStart="92dp"
                 android:text="Text View"
                 android:textColor="@color/black"
-                android:textSize="18sp"
-                app:layout_constraintStart_toStartOf="@id/imgCountry"
-                app:layout_constraintTop_toBottomOf="@id/imgCountry" />
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="@+id/imgCountry"
+                app:layout_constraintStart_toEndOf="@+id/imgCountry"
+                app:layout_constraintTop_toTopOf="@+id/imgCountry"
+                app:layout_constraintVertical_bias="0.594" />
 
             <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
                 android:id="@+id/video"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
-                android:layout_marginTop="84dp"
+                android:layout_marginTop="80dp"
                 android:layout_marginEnd="30dp"
                 app:autoPlay="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/txtMealCategory" />
+                app:layout_constraintTop_toBottomOf="@+id/txtCountry" />
 
             <TextView
                 android:id="@+id/textView3"

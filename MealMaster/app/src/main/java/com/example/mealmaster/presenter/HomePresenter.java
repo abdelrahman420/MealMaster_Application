@@ -3,13 +3,12 @@ package com.example.mealmaster.presenter;
 import com.example.mealmaster.model.database.DTOs.AreaListDTO;
 import com.example.mealmaster.model.database.DTOs.CategoriesDTO;
 import com.example.mealmaster.model.database.DTOs.FilterMealDTO;
-import com.example.mealmaster.model.database.DTOs.IngredientDTO;
 import com.example.mealmaster.model.database.DTOs.IngredientListDTO;
 import com.example.mealmaster.model.database.DTOs.MealDTO;
 import com.example.mealmaster.model.network.NetworkCall;
 import com.example.mealmaster.model.repsitory.MealRepository;
-import com.example.mealmaster.view.fragments.Home.HomeFragmentView;
-import com.example.mealmaster.view.fragments.Home.OnMealCLickListener;
+import com.example.mealmaster.view.fragments.home.HomeFragmentView;
+import com.example.mealmaster.view.fragments.home.OnMealCLickListener;
 
 import java.util.List;
 

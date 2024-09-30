@@ -1,4 +1,4 @@
-package com.example.mealmaster.view.fragments.MealDetails;
+package com.example.mealmaster.view.fragments.meal_details;
 
 import android.os.Bundle;
 
@@ -8,11 +8,14 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.mealmaster.R;
@@ -31,7 +34,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MealDetailsFragment extends Fragment implements MealDetailsView {
-
     private ImageView mealImage;
     private ImageView areaImage;
     private TextView mealName ;
@@ -44,6 +46,9 @@ public class MealDetailsFragment extends Fragment implements MealDetailsView {
     private RecyclerView ingredientRecyclerView;
     private IngredientAdapter ingredientAdapter;
     private List<IngredientDTO> ingredientList = new ArrayList<>();
+    List<String> ingredientNames;
+    List<String> ingredientMeasures;
+    private ImageButton btnAdd;
     public MealDetailsFragment() {
         // Required empty public constructor
     }
@@ -51,7 +56,7 @@ public class MealDetailsFragment extends Fragment implements MealDetailsView {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        meal = (MealDTO)getArguments().getSerializable("meal");
         presenter = new MealDetailsPresenter(this, MealRepositoryImpl.getInstance(RemoteDataSourceImpl.getInstance(), LocalDataSourceImpl.getInstance(getContext())));
 
     }
@@ -72,14 +77,22 @@ public class MealDetailsFragment extends Fragment implements MealDetailsView {
         mealInstructions = view.findViewById(R.id.steps);
         youTubeVideo = view.findViewById(R.id.video);
         ingredientRecyclerView = view.findViewById(R.id.IngRecyclerView);
-        ingredientRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-
-        // Set up adapter
-        ingredientAdapter = new IngredientAdapter(getContext(), ingredientList);
-        ingredientRecyclerView.setAdapter(ingredientAdapter);
-
-
-        presenter.loadMealDetails(getArguments());
+        btnAdd = view.findViewById(R.id.btnFav);
+        areaImage = view.findViewById(R.id.imgCountry);
+        ingredientRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false));
+        ingredientNames = meal.getIngredients();
+        ingredientMeasures = meal.getMeasures();
+        for(int i = 0;i<ingredientNames.size();i++)
+        {
+            ingredientList.add(new IngredientDTO(ingredientNames.get(i),ingredientMeasures.get(i)));
+        }
+        presenter.loadMealDetails(meal);
+        btnAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                OnAddToFav(meal);
+            }
+        });
     }
 
     @Override
@@ -88,6 +101,8 @@ public class MealDetailsFragment extends Fragment implements MealDetailsView {
         mealCategory.setText(meal.getStrCategory());
         mealArea.setText(meal.getStrArea());
         mealInstructions.setText(meal.getStrInstructions());
+        ingredientAdapter = new IngredientAdapter(getContext(), ingredientList);
+        ingredientRecyclerView.setAdapter(ingredientAdapter);
         youTubeVideo.addYouTubePlayerListener(new AbstractYouTubePlayerListener() {
             @Override
             public void onReady(@NonNull YouTubePlayer youTubePlayer) {
@@ -101,6 +116,18 @@ public class MealDetailsFragment extends Fragment implements MealDetailsView {
                 .load(meal.getStrMealThumb())
                 .placeholder(R.drawable.ic_launcher_background) // Placeholder image
                 .into(mealImage);
+        String areaName = meal.getStrArea().toLowerCase().replace(" ", "_").replaceAll("[^a-zA-Z0-9_]", ""); // Format area name
+        int imageResId = getContext().getResources().getIdentifier(areaName, "drawable", getContext().getPackageName());
+        Glide.with(this)
+                .load(imageResId)
+                .placeholder(R.drawable.ic_launcher_background) // Placeholder image
+                .into(areaImage);
+
     }
 
+    @Override
+    public void OnAddToFav(MealDTO meal) {
+        presenter.addMealToFavorites(meal);
+        Toast.makeText(getContext(), meal.getStrMeal()+"is added to favourites", Toast.LENGTH_SHORT).show();
+    }
 }

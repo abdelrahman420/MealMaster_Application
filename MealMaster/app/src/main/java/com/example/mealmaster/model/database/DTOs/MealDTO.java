@@ -254,7 +254,6 @@ public class MealDTO implements Serializable {
 
             return ingredients;
         }
-
         public List<String> getMeasures() {
         List<String> measures = new ArrayList<>();
         if (strMeasure1 != null && !strMeasure1.isEmpty()) measures.add(strMeasure1);

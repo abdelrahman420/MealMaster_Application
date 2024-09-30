@@ -11,7 +11,7 @@ import androidx.fragment.app.FragmentTransaction;
 import com.example.mealmaster.R;
 import com.example.mealmaster.databinding.ActivityMainBinding;
 import com.example.mealmaster.presenter.MainPresenter;
-import com.example.mealmaster.view.fragments.Home.HomeFragment;
+import com.example.mealmaster.view.fragments.home.HomeFragment;
 
 public class MainActivity extends AppCompatActivity implements MainScreenView{
 

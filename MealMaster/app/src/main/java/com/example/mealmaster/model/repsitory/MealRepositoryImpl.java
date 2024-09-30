@@ -31,19 +31,19 @@ public class MealRepositoryImpl implements MealRepository {
 
 
     @Override
-    public LiveData<List<MealDTO>> getStoredMeals() {
+    public LiveData<List<MealDTO>> _getStoredMeals() {
         return localDataSource.getStoredData();
     }
 
 
 
     @Override
-    public void insertMeal(MealDTO meal) {
+    public void _insertMeal(MealDTO meal) {
         localDataSource.insert(meal);
     }
 
     @Override
-    public void deleteMeal(MealDTO meal) {
+    public void _deleteMeal(MealDTO meal) {
         localDataSource.delete(meal);
     }
 

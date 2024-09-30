@@ -19,7 +19,7 @@ public class LocalDataSourceImpl implements LocalDataSource{
             this.context = context;
             AppDatabase db = AppDatabase.getInstance(this.context.getApplicationContext());
             favMealDAO = db.getFavMealDAO();
-            storedMeals = (LiveData<List<MealDTO>>) favMealDAO.getFavMeals();
+            storedMeals = favMealDAO.getFavMeals();
         }
 
         public static LocalDataSource getInstance(Context context) {

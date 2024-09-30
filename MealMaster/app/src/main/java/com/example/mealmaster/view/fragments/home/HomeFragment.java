@@ -1,4 +1,4 @@
-package com.example.mealmaster.view.fragments.Home;
+package com.example.mealmaster.view.fragments.home;
 
 import android.os.Bundle;
 
@@ -26,7 +26,7 @@ import com.example.mealmaster.model.network.RemoteDataSourceImpl;
 import com.example.mealmaster.model.repsitory.MealRepositoryImpl;
 import com.example.mealmaster.presenter.HomePresenter;
 import com.example.mealmaster.view.adapter.CategoryAdapter;
-import com.example.mealmaster.view.fragments.MealDetails.MealDetailsFragment;
+import com.example.mealmaster.view.fragments.meal_details.MealDetailsFragment;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.example.mealmaster.view.fragments.Home;
+package com.example.mealmaster.view.fragments.home;
 
 import com.example.mealmaster.model.database.DTOs.CategoriesDTO;
 import com.example.mealmaster.model.database.DTOs.MealDTO;

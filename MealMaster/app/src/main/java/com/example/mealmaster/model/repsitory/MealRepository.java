@@ -8,12 +8,12 @@ import com.example.mealmaster.model.network.NetworkCall;
 import java.util.List;
 
 public interface MealRepository {
-    LiveData<List<MealDTO>> getStoredMeals();
+    LiveData<List<MealDTO>> _getStoredMeals();
 
 
-    void insertMeal(MealDTO meal);
+    void _insertMeal(MealDTO meal);
 
-    void deleteMeal(MealDTO meal);
+    void _deleteMeal(MealDTO meal);
 
     void _searchMealsByName(String mealName, NetworkCall networkCallBack);
     void _searchMealsByFirstLetter(char firstLetter, NetworkCall networkCallBack);

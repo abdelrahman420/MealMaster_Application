@@ -4,13 +4,11 @@ public class IngredientDTO {
 
     private String name;
     private String measure;
-    private String imageUrl;
 
 
-    public IngredientDTO(String name, String measure, String imageUrl) {
+    public IngredientDTO(String name, String measure) {
         this.name = name;
         this.measure = measure;
-        this.imageUrl = imageUrl;
     }
 
     public String getName() {
@@ -19,10 +17,6 @@ public class IngredientDTO {
 
     public String getMeasure() {
         return measure;
-    }
-
-    public String getImageUrl() {
-        return imageUrl;
     }
 }
 

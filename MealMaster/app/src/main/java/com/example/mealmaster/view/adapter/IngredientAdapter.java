@@ -38,9 +38,11 @@ public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.In
 
         // Bind the ingredient name and image using Glide
         holder.ingredientName.setText(ingredient.getName());
+        holder.ingredientMeasure.setText(ingredient.getMeasure());
+
         Glide.with(context)
-                .load(ingredient.getImageUrl())
-                .placeholder(R.drawable.ic_launcher_background)  // Placeholder while image loads
+                .load("https://www.themealdb.com/images/ingredients/"+holder.ingredientName.getText()+".png")
+                .placeholder(R.drawable.ic_launcher_background)
                 .into(holder.ingredientImage);
     }
 
@@ -49,7 +51,6 @@ public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.In
         return ingredientsList.size();
     }
 
-    // ViewHolder class for RecyclerView
     public static class IngredientViewHolder extends RecyclerView.ViewHolder {
         TextView ingredientName;
         ImageView ingredientImage;
