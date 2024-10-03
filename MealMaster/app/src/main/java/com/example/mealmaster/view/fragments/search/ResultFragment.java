@@ -6,7 +6,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.lifecycle.LiveData;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -19,10 +18,7 @@ import com.example.mealmaster.model.database.DTOs.MealDTO;
 import com.example.mealmaster.model.database.LocalDataSourceImpl;
 import com.example.mealmaster.model.network.RemoteDataSourceImpl;
 import com.example.mealmaster.model.repsitory.MealRepositoryImpl;
-import com.example.mealmaster.presenter.FavMealsPresenter;
 import com.example.mealmaster.presenter.ResultPresenter;
-import com.example.mealmaster.presenter.SearchPresenter;
-import com.example.mealmaster.view.adapter.FavAdapter;
 import com.example.mealmaster.view.adapter.ResultAdapter;
 
 import java.util.List;
@@ -37,7 +33,6 @@ public class ResultFragment extends Fragment implements ResultView {
     ResultPresenter resultPresenter;
     FragmentManager fragmentManager;
     public ResultFragment() {
-        // Required empty public constructor
     }
 
     @Override
@@ -58,7 +53,7 @@ public class ResultFragment extends Fragment implements ResultView {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        resultRecyclerView = view.findViewById(R.id.resultRecyclerView);
+        resultRecyclerView = view.findViewById(R.id.dayRecyclerView);
 
         resultAdapter = new ResultAdapter(getContext(), meals, fragmentManager);
 

@@ -6,9 +6,9 @@ import androidx.fragment.app.Fragment;
 
 import com.example.mealmaster.R;
 import com.example.mealmaster.view.activity.main_screen.MainScreenView;
+import com.example.mealmaster.view.fragments.weekly_plan.WeeklyPlanFragment;
 import com.example.mealmaster.view.fragments.favourite_meals.FavFragment;
 import com.example.mealmaster.view.fragments.home.HomeFragment;
-import com.example.mealmaster.view.fragments.PlannerFragment;
 import com.example.mealmaster.view.fragments.search.SearchFragment;
 
 public class MainPresenter {
@@ -31,7 +31,7 @@ public class MainPresenter {
         } else if (itemId == R.id.home) {
             selectedFragment = new HomeFragment();
         } else if (itemId == R.id.plan) {
-            selectedFragment = new PlannerFragment();
+            selectedFragment = new WeeklyPlanFragment();
         } else {
         }
         // If a fragment is selected, instruct the view to replace the fragment

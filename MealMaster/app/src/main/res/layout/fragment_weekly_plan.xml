@@ -1,0 +1,72 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/WeeklyPlan"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.fragments.weekly_plan.WeeklyPlanFragment">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:gravity="center_horizontal">
+
+        <!-- Title Text -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Weekly Plan"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_marginBottom="20dp"/>
+
+        <!-- Button for each day of the week -->
+        <Button
+            android:id="@+id/btnSaturday"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Saturday" />
+
+        <Button
+            android:id="@+id/btnSunday"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sunday" />
+
+        <Button
+            android:id="@+id/btnMonday"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Monday" />
+
+        <Button
+            android:id="@+id/btnTuesday"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tuesday" />
+
+        <Button
+            android:id="@+id/btnWednesday"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Wednesday" />
+
+        <Button
+            android:id="@+id/btnThursday"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Thursday" />
+
+        <Button
+            android:id="@+id/btnFriday"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Friday" />
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

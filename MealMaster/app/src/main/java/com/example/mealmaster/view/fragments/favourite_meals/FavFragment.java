@@ -81,7 +81,6 @@ public class FavFragment extends Fragment implements FavFragmentView,OnFavClickL
         favMealsPresenter.deleteMeal(meal);
         favAdapter.notifyDataSetChanged();
 
-        /* Show a Snackbar with undo option */
         Snackbar snackbar = Snackbar.make(getView(), meal.getStrMeal() + " Deleted", Snackbar.LENGTH_LONG);
 
         snackbar.setAction("Undo", new View.OnClickListener() {
@@ -94,8 +93,4 @@ public class FavFragment extends Fragment implements FavFragmentView,OnFavClickL
         snackbar.show();
     }
 
-    @Override
-    public void OnFavMealClick(MealDTO meal) {
-        
-    }
 }
