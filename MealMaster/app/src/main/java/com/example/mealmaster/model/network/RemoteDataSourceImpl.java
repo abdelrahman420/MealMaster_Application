@@ -99,7 +99,7 @@ public class RemoteDataSourceImpl implements RemoteDataSource {
             public void onResponse(Call<MealResponse> call, Response<MealResponse> response) {
                 if (response.body() != null && response.body().getMeals() != null) {
                     Log.i(TAG, "Meal Found: " + response.body().getMeals());
-                    networkCallBack.OnGetMealSuccess(response.body().getMeals());
+                    networkCallBack.OnGetMealByIDSuccess(response.body().getMeals().get(0));
                 } else {
                     Log.i(TAG, "No Meals Found: ");
                     networkCallBack.onFailureResult("No meals Found");

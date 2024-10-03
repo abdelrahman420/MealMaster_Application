@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.mealmaster.R;
 import com.example.mealmaster.model.database.DTOs.CategoriesDTO;
+import com.example.mealmaster.view.fragments.search.OnSearchClickListener;
 
 import java.util.List;
 
@@ -19,9 +20,11 @@ public class CategoryListAdapter extends RecyclerView.Adapter<CategoryListAdapte
 
         private List<CategoriesDTO> categories;
         private Context context;
-        public CategoryListAdapter(List<CategoriesDTO> categories, Context context) {
+        private OnSearchClickListener listener;
+        public CategoryListAdapter(List<CategoriesDTO> categories, Context context, OnSearchClickListener listener) {
             this.categories = categories;
             this.context = context;
+            this.listener = listener;
         }
 
 
@@ -35,16 +38,25 @@ public class CategoryListAdapter extends RecyclerView.Adapter<CategoryListAdapte
         @Override
         public void onBindViewHolder( ViewHolder holder, int position) {
             CategoriesDTO category = categories.get(position);
-
+            String categoryName = category.getStrCategory();
             // Setting the product details
             holder.txtCategory.setText(category.getStrCategory());
             holder.txtDescription.setText(category.getStrCategoryDescription());
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    listener.onCategoryListener(categoryName);
+                }
+            });
+
 
             // Loading the image using Glide
             Glide.with(context)
                     .load(category.getStrCategoryThumb())  // URL of the image
                     .placeholder(R.drawable.ic_launcher_background)  // Placeholder while loading
                     .into(holder.imageView);  // Target ImageView to load into
+
+
         }
 
         @Override

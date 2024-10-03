@@ -11,6 +11,7 @@ import java.util.List;
 
 public interface NetworkCall {
     void OnGetMealSuccess(List<MealDTO> meals);
+    void OnGetMealByIDSuccess(MealDTO meal);
     void onSuccessAllMealCategories(List<CategoriesDTO> categoriesList);
     void onSuccessListArea(List<AreaListDTO> AreaList);
     void onSuccessListIngredients(List<IngredientListDTO> IngredientsList);

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="8dp"
+    android:elevation="6dp"
+    app:cardCornerRadius="20dp"
+    app:cardUseCompatPadding="true"
+    app:cardBackgroundColor="@android:color/white">
+
+    <!-- Meal Image -->
+    <ImageView
+        android:id="@+id/imgResultMeal"
+        android:layout_width="204dp"
+        android:layout_height="194dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_launcher_background" />
+
+    <!-- Gradient overlay -->
+    <View
+        android:layout_width="204dp"
+        android:layout_height="60dp"
+        android:layout_gravity="bottom"
+        android:background="@drawable/overlay_gradient" />
+
+    <!-- Meal Name -->
+    <TextView
+        android:id="@+id/txtResultMeal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="10dp"
+        android:text="Meal"
+        android:textColor="@android:color/white"
+        android:textSize="16sp" />
+
+</androidx.cardview.widget.CardView>

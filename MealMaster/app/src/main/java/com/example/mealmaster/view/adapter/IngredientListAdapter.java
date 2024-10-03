@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.mealmaster.R;
 import com.example.mealmaster.model.database.DTOs.IngredientListDTO;
+import com.example.mealmaster.view.fragments.search.OnSearchClickListener;
 
 import java.util.List;
 
@@ -19,9 +20,11 @@ public class IngredientListAdapter extends RecyclerView.Adapter<IngredientListAd
 
     private List<IngredientListDTO> ingredients;
     private Context context;
-    public IngredientListAdapter(List<IngredientListDTO> ingredients, Context context) {
+    private OnSearchClickListener listener;
+    public IngredientListAdapter(List<IngredientListDTO> ingredients, Context context,OnSearchClickListener listener) {
         this.ingredients = ingredients;
         this.context = context;
+        this.listener = listener;
     }
 
 
@@ -35,9 +38,14 @@ public class IngredientListAdapter extends RecyclerView.Adapter<IngredientListAd
     @Override
     public void onBindViewHolder( ViewHolder holder, int position) {
         IngredientListDTO ingredient = ingredients.get(position);
-
+        String ingredientName = ingredient.getStrIngredient();
         holder.txtIngredient.setText(ingredient.getStrIngredient());
-
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                listener.onIngredientListener(ingredient.getStrIngredient());
+            }
+        });
         Glide.with(context)
                 .load("https://www.themealdb.com/images/ingredients/"+holder.txtIngredient.getText()+".png")
                 .placeholder(R.drawable.ic_launcher_background)

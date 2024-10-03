@@ -56,7 +56,7 @@ public class MealDetailsFragment extends Fragment implements MealDetailsView {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        meal = (MealDTO)getArguments().getSerializable("meal");
+        meal = (MealDTO)getArguments().getParcelable("meal");
         presenter = new MealDetailsPresenter(this, MealRepositoryImpl.getInstance(RemoteDataSourceImpl.getInstance(), LocalDataSourceImpl.getInstance(getContext())));
 
     }

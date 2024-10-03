@@ -48,6 +48,11 @@ public class HomePresenter implements NetworkCall{
     }
 
     @Override
+    public void OnGetMealByIDSuccess(MealDTO meal) {
+
+    }
+
+    @Override
     public void onSuccessListArea(List<AreaListDTO> AreaList) {
 
     }

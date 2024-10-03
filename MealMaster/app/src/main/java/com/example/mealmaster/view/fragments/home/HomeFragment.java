@@ -27,6 +27,7 @@ import com.example.mealmaster.model.repsitory.MealRepositoryImpl;
 import com.example.mealmaster.presenter.HomePresenter;
 import com.example.mealmaster.view.adapter.CategoryListAdapter;
 import com.example.mealmaster.view.fragments.meal_details.MealDetailsFragment;
+import com.example.mealmaster.view.fragments.search.OnSearchClickListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,6 +40,7 @@ public class HomeFragment extends Fragment implements HomeFragmentView ,OnMealCL
     private TextView txtMeal;
     private ImageView imgTodaysMeal;
     private MealDTO todaysMeal;
+    private OnSearchClickListener listener;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -60,7 +62,7 @@ public class HomeFragment extends Fragment implements HomeFragmentView ,OnMealCL
         txtMeal = view.findViewById(R.id.txtTodaysMeal);
         imgTodaysMeal = view.findViewById(R.id.imgTodaysMeal);
 
-        categoryListAdapter = new CategoryListAdapter(new ArrayList<>(), getContext());
+        categoryListAdapter = new CategoryListAdapter(new ArrayList<>(), getContext(),listener);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(categoryListAdapter);
         imgTodaysMeal.setOnClickListener(new View.OnClickListener() {
@@ -109,7 +111,7 @@ public class HomeFragment extends Fragment implements HomeFragmentView ,OnMealCL
     public void onMealClick(MealDTO meal) {
         MealDetailsFragment mealDetailsFragment = new MealDetailsFragment();
         Bundle bundle = new Bundle();
-        bundle.putSerializable("meal", meal);
+        bundle.putParcelable("meal", meal);
         mealDetailsFragment.setArguments(bundle);
         FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();

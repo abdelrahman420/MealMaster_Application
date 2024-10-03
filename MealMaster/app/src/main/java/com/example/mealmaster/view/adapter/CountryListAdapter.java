@@ -13,6 +13,7 @@ import com.bumptech.glide.Glide;
 import com.example.mealmaster.R;
 import com.example.mealmaster.model.database.DTOs.AreaListDTO;
 import com.example.mealmaster.model.database.DTOs.CategoriesDTO;
+import com.example.mealmaster.view.fragments.search.OnSearchClickListener;
 
 import java.util.List;
 
@@ -20,9 +21,11 @@ public class CountryListAdapter extends RecyclerView.Adapter<CountryListAdapter.
 
     private List<AreaListDTO> countries;
     private Context context;
-    public CountryListAdapter(List<AreaListDTO> countries, Context context) {
+    private OnSearchClickListener listener;
+    public CountryListAdapter(List<AreaListDTO> countries, Context context,OnSearchClickListener listener) {
         this.countries = countries;
         this.context = context;
+        this.listener = listener;
     }
 
 
@@ -38,18 +41,24 @@ public class CountryListAdapter extends RecyclerView.Adapter<CountryListAdapter.
         AreaListDTO country = countries.get(position);
 
         // Setting the product details
-        holder.txtCountry.setText(country.getStrArea());
 
-        // Format the area name to match drawable file names
-        String areaName = country.getStrArea().toLowerCase().replace(" ", "_").replaceAll("[^a-zA-Z0-9_]", "");
 
-        // Get the image resource ID using the formatted area name
-        int imageResId = context.getResources().getIdentifier(areaName, "drawable", context.getPackageName());
+        String countryName =country.getStrArea();
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                listener.onCountryListener(countryName);
+            }
+        });
+        holder.txtCountry.setText(countryName);
+
+        int imageResId = context.getResources().getIdentifier(countryName.toLowerCase(), "drawable", context.getPackageName());
 
         Glide.with(context)
                 .load(imageResId)
                 .placeholder(R.drawable.ic_launcher_background)
                 .into(holder.imgCountry);
+
     }
 
     @Override

@@ -9,38 +9,35 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.mealmaster.R;
 import com.example.mealmaster.model.database.DTOs.MealDTO;
-import com.example.mealmaster.view.fragments.favourite_meals.OnFavClickListener;
 import com.example.mealmaster.view.fragments.meal_details.MealDetailsFragment;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
 
-public class FavAdapter extends RecyclerView.Adapter<FavAdapter.ViewHolder> {
-    private static final String TAG = "AllMealsAdapter";
+public class ResultAdapter extends RecyclerView.Adapter<ResultAdapter.ViewHolder> {
     private Context context;
     private List<MealDTO> mealsList;
-    private OnFavClickListener listener;
     private FragmentManager fragmentManager;
 
-    public FavAdapter(Context context, List<MealDTO> mealsList, OnFavClickListener listener , FragmentManager fragmentManager ) {
+    public ResultAdapter(Context context, List<MealDTO> mealsList,FragmentManager fragmentManager) {
         this.context = context;
         this.mealsList = mealsList;
-        this.listener = listener;
-        this.fragmentManager = fragmentManager;
+        this.fragmentManager=fragmentManager;
     }
+
+
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.row_fav, parent, false);
+                .inflate(R.layout.row_result, parent, false);
         return new ViewHolder(view);
     }
 
@@ -52,16 +49,12 @@ public class FavAdapter extends RecyclerView.Adapter<FavAdapter.ViewHolder> {
 
         Glide.with(context)
                 .load(meal.getStrMealThumb())
-                .placeholder(R.drawable.ic_launcher_background)
-                .into(holder.imgFav);
-        holder.txtFav.setText(meal.getStrMeal());
+                .apply(new RequestOptions().override(200, 200)
+                        .placeholder(R.drawable.ic_launcher_background)
+                        .error(R.drawable.ic_launcher_foreground))
+                .into(holder.imgResult);
+        holder.txtResult.setText(meal.getStrMeal());
 
-        holder.btnRmv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                listener.OnFavMealRmv(meal);
-            }
-        });
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -89,17 +82,16 @@ public class FavAdapter extends RecyclerView.Adapter<FavAdapter.ViewHolder> {
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        private ImageView imgFav;
-        private TextView txtFav;
-        private FloatingActionButton btnRmv;
+        private ImageView imgResult;
+        private TextView txtResult;
 
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            imgFav = itemView.findViewById(R.id.imgFavMeal);
-            txtFav = itemView.findViewById(R.id.txtFavMealName);
-            btnRmv = itemView.findViewById(R.id.btnFavRmv);
+            imgResult = itemView.findViewById(R.id.imgResultMeal);
+            txtResult = itemView.findViewById(R.id.txtResultMeal);
         }
     }
 }
+
 
