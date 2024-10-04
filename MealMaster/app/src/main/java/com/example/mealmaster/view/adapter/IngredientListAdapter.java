@@ -14,8 +14,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.mealmaster.R;
 import com.example.mealmaster.model.database.DTOs.IngredientListDTO;
-import com.example.mealmaster.view.fragments.search.OnIngredientListener;
-import com.example.mealmaster.view.fragments.search.OnSearchClickListener;
+import com.example.mealmaster.view.fragments.search.filter_by_ingredient.OnIngredientListener;
 
 import java.util.List;
 

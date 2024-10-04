@@ -7,8 +7,7 @@ import com.example.mealmaster.model.database.DTOs.IngredientListDTO;
 import com.example.mealmaster.model.database.DTOs.MealDTO;
 import com.example.mealmaster.model.network.NetworkCall;
 import com.example.mealmaster.model.repsitory.MealRepository;
-import com.example.mealmaster.view.fragments.search.FilterByCountryView;
-import com.example.mealmaster.view.fragments.search.FilterByIngredientView;
+import com.example.mealmaster.view.fragments.search.filter_by_ingredient.FilterByIngredientView;
 
 import java.util.ArrayList;
 import java.util.List;

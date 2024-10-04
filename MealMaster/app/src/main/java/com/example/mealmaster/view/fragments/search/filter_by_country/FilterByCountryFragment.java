@@ -1,4 +1,4 @@
-package com.example.mealmaster.view.fragments.search;
+package com.example.mealmaster.view.fragments.search.filter_by_country;
 
 import android.os.Bundle;
 
@@ -16,56 +16,52 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.mealmaster.R;
-import com.example.mealmaster.model.database.DTOs.CategoriesDTO;
+import com.example.mealmaster.model.database.DTOs.AreaListDTO;
 import com.example.mealmaster.model.database.DTOs.MealDTO;
 import com.example.mealmaster.model.database.LocalDataSourceImpl;
 import com.example.mealmaster.model.network.RemoteDataSourceImpl;
 import com.example.mealmaster.model.repsitory.MealRepositoryImpl;
-import com.example.mealmaster.presenter.FilterCategoryPresenter;
-import com.example.mealmaster.view.adapter.CategoryListAdapter;
+import com.example.mealmaster.presenter.FilterCountryPresenter;
+import com.example.mealmaster.view.adapter.CountryListAdapter;
+import com.example.mealmaster.view.fragments.search.ResultFragment;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class FilterByCategoryFragment extends Fragment implements FilterByCategoryView,OnCategoryListener {
+public class FilterByCountryFragment extends Fragment implements OnCountryListener, FilterByCountryView {
 
-    private CategoryListAdapter categoryListAdapter;
-    private RecyclerView categoriesRecyclerView;
-    FilterCategoryPresenter filterCategoryPresenter;
-    public FilterByCategoryFragment() {
-        // Required empty public constructor
+    private CountryListAdapter countryListAdapter;
+    private RecyclerView countriesRecyclerView;
+    FilterCountryPresenter filterCountryPresenter;
+    public FilterByCountryFragment() {
+
     }
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        filterCategoryPresenter = new FilterCategoryPresenter(this, MealRepositoryImpl.getInstance(RemoteDataSourceImpl.getInstance(), LocalDataSourceImpl.getInstance(getContext())));
+        filterCountryPresenter = new FilterCountryPresenter(this, MealRepositoryImpl.getInstance(RemoteDataSourceImpl.getInstance(), LocalDataSourceImpl.getInstance(getContext())));
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_filter_category, container, false);
-
+        return inflater.inflate(R.layout.fragment_filter_by_country, container, false);
     }
-
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        categoriesRecyclerView = view.findViewById(R.id.recyclerViewCategory);
-        categoriesRecyclerView.setAdapter(categoryListAdapter);
-        categoriesRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
-        categoryListAdapter = new CategoryListAdapter(new ArrayList<>(), getContext(), this);
-        categoriesRecyclerView.setAdapter(categoryListAdapter);
-        filterCategoryPresenter.loadAllCategories();
+        countriesRecyclerView = view.findViewById(R.id.recyclerViewCountry);
+        countriesRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+        countryListAdapter = new CountryListAdapter(new ArrayList<>(), getContext(), this);
+        countriesRecyclerView.setAdapter(countryListAdapter);
+        filterCountryPresenter.loadAllCountries();
     }
 
     @Override
-    public void displayAllCategories(List<CategoriesDTO> categories) {
-        categoryListAdapter.updateCategories(categories);
+    public void displayAllCountries(List<AreaListDTO> countries) {
+        countryListAdapter.updateCountries(countries);
     }
 
     @Override
@@ -87,7 +83,7 @@ public class FilterByCategoryFragment extends Fragment implements FilterByCatego
     }
 
     @Override
-    public void onCategoryListener(String category) {
-        filterCategoryPresenter.getMealByCategory(category);
+    public void onCountryListener(String country) {
+        filterCountryPresenter.getMealByArea(country);
     }
 }

@@ -1,4 +1,4 @@
-package com.example.mealmaster.view.fragments.search;
+package com.example.mealmaster.view.fragments.search.filter_by_country;
 
 import com.example.mealmaster.model.database.DTOs.AreaListDTO;
 import com.example.mealmaster.model.database.DTOs.MealDTO;

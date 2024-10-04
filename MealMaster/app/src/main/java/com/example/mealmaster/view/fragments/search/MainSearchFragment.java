@@ -14,6 +14,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.example.mealmaster.R;
+import com.example.mealmaster.view.fragments.search.filter_by_category.FilterByCategoryFragment;
+import com.example.mealmaster.view.fragments.search.filter_by_country.FilterByCountryFragment;
+import com.example.mealmaster.view.fragments.search.filter_by_ingredient.FilterByIngredientFragment;
+import com.example.mealmaster.view.fragments.search.search_by_name.SearchByNameFragment;
 
 
 public class MainSearchFragment extends Fragment {

@@ -2,6 +2,7 @@ package com.example.mealmaster.view.adapter;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -59,6 +60,7 @@ public class ResultAdapter extends RecyclerView.Adapter<ResultAdapter.ViewHolder
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Log.d("ResultAdapter", "Item clicked: " + meal.getStrMeal());
                 MealDetailsFragment mealDetailsFragment = new MealDetailsFragment();
                 Bundle bundle = new Bundle();
                 bundle.putParcelable("meal", meal);

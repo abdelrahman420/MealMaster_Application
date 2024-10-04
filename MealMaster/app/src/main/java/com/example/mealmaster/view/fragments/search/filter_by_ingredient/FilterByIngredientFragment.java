@@ -1,4 +1,4 @@
-package com.example.mealmaster.view.fragments.search;
+package com.example.mealmaster.view.fragments.search.filter_by_ingredient;
 
 import android.os.Bundle;
 
@@ -21,10 +21,9 @@ import com.example.mealmaster.model.database.DTOs.MealDTO;
 import com.example.mealmaster.model.database.LocalDataSourceImpl;
 import com.example.mealmaster.model.network.RemoteDataSourceImpl;
 import com.example.mealmaster.model.repsitory.MealRepositoryImpl;
-import com.example.mealmaster.presenter.FilterCountryPresenter;
 import com.example.mealmaster.presenter.FilterIngredientPresenter;
-import com.example.mealmaster.view.adapter.CountryListAdapter;
 import com.example.mealmaster.view.adapter.IngredientListAdapter;
+import com.example.mealmaster.view.fragments.search.ResultFragment;
 
 import java.util.ArrayList;
 import java.util.List;

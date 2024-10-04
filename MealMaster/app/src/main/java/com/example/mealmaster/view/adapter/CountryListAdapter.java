@@ -14,8 +14,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.mealmaster.R;
 import com.example.mealmaster.model.database.DTOs.AreaListDTO;
-import com.example.mealmaster.view.fragments.search.OnCountryListener;
-import com.example.mealmaster.view.fragments.search.OnSearchClickListener;
+import com.example.mealmaster.view.fragments.search.filter_by_country.OnCountryListener;
 
 import java.util.List;
 

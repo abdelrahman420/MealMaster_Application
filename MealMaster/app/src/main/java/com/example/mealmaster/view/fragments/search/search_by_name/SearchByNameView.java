@@ -1,4 +1,4 @@
-package com.example.mealmaster.view.fragments.search;
+package com.example.mealmaster.view.fragments.search.search_by_name;
 
 import com.example.mealmaster.model.database.DTOs.MealDTO;
 

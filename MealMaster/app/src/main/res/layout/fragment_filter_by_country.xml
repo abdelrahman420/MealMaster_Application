@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".view.fragments.search.FilterByCategoryFragment">
+    tools:context=".view.fragments.search.filter_by_category.FilterByCategoryFragment">
 
     <!-- Toolbar with "Filter By Category" text -->
     <androidx.appcompat.widget.Toolbar

@@ -1,10 +1,11 @@
-package com.example.mealmaster.view.fragments.search;
+package com.example.mealmaster.view.fragments.search.search_by_name;
 
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -36,6 +37,7 @@ public class SearchByNameFragment extends Fragment implements SearchByNameView{
     private RecyclerView searchResultsRecyclerView;
     private EditText searchBar;
     private Timer searchTimer;
+    FragmentManager fragmentManager;
     public SearchByNameFragment() {
     }
 
@@ -44,6 +46,7 @@ public class SearchByNameFragment extends Fragment implements SearchByNameView{
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         searchByNamePresenter = new SearchByNamePresenter(this, MealRepositoryImpl.getInstance(RemoteDataSourceImpl.getInstance(), LocalDataSourceImpl.getInstance(getContext())));
+        fragmentManager =getActivity().getSupportFragmentManager();
     }
 
     @Override
@@ -59,7 +62,7 @@ public class SearchByNameFragment extends Fragment implements SearchByNameView{
 
         searchResultsRecyclerView = view.findViewById(R.id.recyclerViewSearchResults);
         searchBar = view.findViewById(R.id.searchBar);
-        mealAdapter = new ResultAdapter( getContext(),new ArrayList<>(),getChildFragmentManager());
+        mealAdapter = new ResultAdapter( getContext(),new ArrayList<>(),fragmentManager);
         searchResultsRecyclerView.setLayoutManager(new GridLayoutManager(getContext(), 3)); // Layout manager for search results
         searchResultsRecyclerView.setAdapter(mealAdapter);
         setupSearchBar();

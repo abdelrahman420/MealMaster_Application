@@ -1,6 +1,5 @@
 package com.example.mealmaster.view.fragments.home;
 
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -11,7 +10,6 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,14 +17,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.airbnb.lottie.LottieAnimationView;
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.annotation.GlideModule;
-import com.bumptech.glide.load.DataSource;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.bumptech.glide.load.engine.GlideException;
-import com.bumptech.glide.request.RequestListener;
-import com.bumptech.glide.request.target.Target;
 import com.example.mealmaster.R;
 import com.example.mealmaster.model.database.DTOs.CategoriesDTO;
 import com.example.mealmaster.model.database.DTOs.MealDTO;
@@ -36,8 +28,7 @@ import com.example.mealmaster.model.repsitory.MealRepositoryImpl;
 import com.example.mealmaster.presenter.HomePresenter;
 import com.example.mealmaster.view.adapter.CategoryListAdapter;
 import com.example.mealmaster.view.fragments.meal_details.MealDetailsFragment;
-import com.example.mealmaster.view.fragments.search.OnCategoryListener;
-import com.example.mealmaster.view.fragments.search.OnSearchClickListener;
+import com.example.mealmaster.view.fragments.search.filter_by_category.OnCategoryListener;
 
 import java.util.ArrayList;
 import java.util.List;
