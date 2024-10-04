@@ -9,12 +9,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.mealmaster.R;
 import com.example.mealmaster.model.database.DTOs.MealDTO;
 import com.example.mealmaster.view.fragments.favourite_meals.OnFavClickListener;
@@ -40,7 +40,7 @@ public class FavAdapter extends RecyclerView.Adapter<FavAdapter.ViewHolder> {
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.row_fav, parent, false);
+                .inflate(R.layout.item_fav, parent, false);
         return new ViewHolder(view);
     }
 
@@ -52,7 +52,8 @@ public class FavAdapter extends RecyclerView.Adapter<FavAdapter.ViewHolder> {
 
         Glide.with(context)
                 .load(meal.getStrMealThumb())
-                .placeholder(R.drawable.ic_launcher_background)
+                .placeholder(R.drawable.placeholder)
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(holder.imgFav);
         holder.txtFav.setText(meal.getStrMeal());
 

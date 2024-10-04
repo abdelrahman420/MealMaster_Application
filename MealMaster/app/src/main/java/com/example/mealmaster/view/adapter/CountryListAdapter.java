@@ -10,9 +10,11 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.mealmaster.R;
 import com.example.mealmaster.model.database.DTOs.AreaListDTO;
-import com.example.mealmaster.model.database.DTOs.CategoriesDTO;
+import com.example.mealmaster.view.fragments.search.OnCountryListener;
 import com.example.mealmaster.view.fragments.search.OnSearchClickListener;
 
 import java.util.List;
@@ -21,8 +23,8 @@ public class CountryListAdapter extends RecyclerView.Adapter<CountryListAdapter.
 
     private List<AreaListDTO> countries;
     private Context context;
-    private OnSearchClickListener listener;
-    public CountryListAdapter(List<AreaListDTO> countries, Context context,OnSearchClickListener listener) {
+    private OnCountryListener listener;
+    public CountryListAdapter(List<AreaListDTO> countries, Context context,OnCountryListener listener) {
         this.countries = countries;
         this.context = context;
         this.listener = listener;
@@ -31,7 +33,7 @@ public class CountryListAdapter extends RecyclerView.Adapter<CountryListAdapter.
 
     @Override
     public CountryListAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_country, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_country, parent, false);
         return new ViewHolder(view);
     }
 
@@ -56,7 +58,9 @@ public class CountryListAdapter extends RecyclerView.Adapter<CountryListAdapter.
 
         Glide.with(context)
                 .load(imageResId)
-                .placeholder(R.drawable.ic_launcher_background)
+                .apply(new RequestOptions().override(150, 150))
+                .placeholder(R.drawable.placeholder)
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(holder.imgCountry);
 
     }

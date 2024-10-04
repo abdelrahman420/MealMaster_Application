@@ -1,82 +1,118 @@
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/WeeklyPlan"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.fragments.home.HomeFragment">
+    android:fillViewport="true">
 
-    <!-- Text above the image -->
-    <TextView
-        android:id="@+id/txtMealofTheDay"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="18dp"
-        android:text="@string/daily_inspiration"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/WeeklyPlan"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FFFFFF"
+        tools:context=".view.fragments.home.HomeFragment">
 
-    <!-- FrameLayout for stacking ImageView and TextView -->
-    <FrameLayout
-        android:id="@+id/mealFrame"
-        android:layout_width="204dp"
-        android:layout_height="194dp"
-        android:layout_marginTop="60dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <!-- Meal Image -->
-        <ImageView
-            android:id="@+id/imgTodaysMeal"
+        <!-- Toolbar with MealMaster text -->
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scaleType="centerCrop"
-            android:src="@drawable/ic_launcher_background" />
+            android:layout_height="wrap_content"
+            android:background="#8B4513"
+            app:layout_constraintTop_toTopOf="parent">
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_gravity="bottom"
-            android:background="@drawable/overlay_gradient" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:padding="16dp"
+                android:text="MealMaster"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+        </androidx.appcompat.widget.Toolbar>
 
+        <!-- Text above the image -->
         <TextView
-            android:id="@+id/txtTodaysMeal"
+            android:id="@+id/txtMealofTheDay"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|center_horizontal"
-            android:layout_marginBottom="10dp"
-            android:text="TextView"
-            android:textColor="@android:color/white"
-            android:textSize="16sp" />
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="18dp"
+            android:text="@string/daily_inspiration"
+            android:textColor="#8C5B18"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar" />
 
-    </FrameLayout>
+        <!-- CardView for rounded corners around the image -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardViewMeal"
+            android:layout_width="204dp"
+            android:layout_height="194dp"
+            android:layout_marginTop="60dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="6dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txtMealofTheDay">
 
-    <!-- Categories List Title -->
-    <TextView
-        android:id="@+id/txtCategoriesList"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/categories"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="@+id/txtMealofTheDay"
-        app:layout_constraintTop_toBottomOf="@+id/mealFrame" />
+            <!-- FrameLayout for stacking ImageView, Gradient, and TextView -->
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-    <!-- RecyclerView for categories -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerview"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtCategoriesList"
-        app:layout_constraintVertical_bias="0.5"
-        app:layout_constraintHorizontal_bias="0.5"/>
+                <!-- Meal Image -->
+                <ImageView
+                    android:id="@+id/imgTodaysMeal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+                <!-- Gradient overlay -->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_gravity="bottom"
+                    android:background="@drawable/overlay_gradient" />
+
+                <!-- Meal title on top of gradient -->
+                <TextView
+                    android:id="@+id/txtTodaysMeal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|center_horizontal"
+                    android:layout_marginBottom="10dp"
+                    android:text="Meal Name"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp" />
+            </FrameLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Categories List Title -->
+        <TextView
+            android:id="@+id/txtCategoriesList"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/categories"
+            android:textColor="#8C5B18"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@+id/txtMealofTheDay"
+            app:layout_constraintTop_toBottomOf="@+id/cardViewMeal" />
+
+        <!-- RecyclerView for categories -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview"
+            android:layout_width="415dp"
+            android:layout_height="784dp"
+            android:background="#F9F9F9"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtCategoriesList"
+            app:layout_constraintVertical_bias="0.5" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

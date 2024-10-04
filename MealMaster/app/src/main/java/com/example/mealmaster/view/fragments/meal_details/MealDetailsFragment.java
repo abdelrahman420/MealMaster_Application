@@ -55,8 +55,8 @@ public class MealDetailsFragment extends Fragment implements MealDetailsView, Da
     private List<IngredientDTO> ingredientList = new ArrayList<>();
     List<String> ingredientNames;
     List<String> ingredientMeasures;
-    private ImageButton btnAdd;
-    private ImageButton btnPlan;
+    private Button btnAdd;
+    private Button btnPlan;
 
     public MealDetailsFragment() {
         // Required empty public constructor
@@ -85,8 +85,8 @@ public class MealDetailsFragment extends Fragment implements MealDetailsView, Da
         mealInstructions = view.findViewById(R.id.steps);
         youTubeVideo = view.findViewById(R.id.video);
         ingredientRecyclerView = view.findViewById(R.id.IngRecyclerView);
-        btnAdd = view.findViewById(R.id.btnFav);
-        btnPlan = view.findViewById(R.id.btnPlan);
+        btnAdd = view.findViewById(R.id.btnAddToFav);
+        btnPlan = view.findViewById(R.id.btnAddToPlan);
         areaImage = view.findViewById(R.id.imgCountry);
         ingredientRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
         ingredientNames = meal.getIngredients();

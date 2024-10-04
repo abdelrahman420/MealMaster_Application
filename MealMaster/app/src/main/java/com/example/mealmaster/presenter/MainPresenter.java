@@ -6,10 +6,12 @@ import androidx.fragment.app.Fragment;
 
 import com.example.mealmaster.R;
 import com.example.mealmaster.view.activity.main_screen.MainScreenView;
+import com.example.mealmaster.view.fragments.search.FilterByCountryFragment;
+import com.example.mealmaster.view.fragments.search.FilterByIngredientFragment;
+import com.example.mealmaster.view.fragments.search.MainSearchFragment;
 import com.example.mealmaster.view.fragments.weekly_plan.WeeklyPlanFragment;
 import com.example.mealmaster.view.fragments.favourite_meals.FavFragment;
 import com.example.mealmaster.view.fragments.home.HomeFragment;
-import com.example.mealmaster.view.fragments.search.SearchFragment;
 
 public class MainPresenter {
 
@@ -27,7 +29,7 @@ public class MainPresenter {
         if (itemId == R.id.fav) {
             selectedFragment = new FavFragment();
         } else if (itemId == R.id.search) {
-            selectedFragment = new SearchFragment();
+            selectedFragment = new MainSearchFragment();
         } else if (itemId == R.id.home) {
             selectedFragment = new HomeFragment();
         } else if (itemId == R.id.plan) {

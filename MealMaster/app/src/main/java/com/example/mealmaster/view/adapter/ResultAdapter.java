@@ -14,6 +14,7 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.mealmaster.R;
 import com.example.mealmaster.model.database.DTOs.MealDTO;
@@ -26,10 +27,10 @@ public class ResultAdapter extends RecyclerView.Adapter<ResultAdapter.ViewHolder
     private List<MealDTO> mealsList;
     private FragmentManager fragmentManager;
 
-    public ResultAdapter(Context context, List<MealDTO> mealsList,FragmentManager fragmentManager) {
+    public ResultAdapter(Context context, List<MealDTO> mealsList, FragmentManager fragmentManager) {
         this.context = context;
         this.mealsList = mealsList;
-        this.fragmentManager=fragmentManager;
+        this.fragmentManager = fragmentManager;
     }
 
 
@@ -37,7 +38,7 @@ public class ResultAdapter extends RecyclerView.Adapter<ResultAdapter.ViewHolder
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.row_result, parent, false);
+                .inflate(R.layout.item_result, parent, false);
         return new ViewHolder(view);
     }
 
@@ -50,8 +51,8 @@ public class ResultAdapter extends RecyclerView.Adapter<ResultAdapter.ViewHolder
         Glide.with(context)
                 .load(meal.getStrMealThumb())
                 .apply(new RequestOptions().override(200, 200)
-                        .placeholder(R.drawable.ic_launcher_background)
-                        .error(R.drawable.ic_launcher_foreground))
+                .placeholder(R.drawable.placeholder)
+                .diskCacheStrategy(DiskCacheStrategy.ALL))
                 .into(holder.imgResult);
         holder.txtResult.setText(meal.getStrMeal());
 

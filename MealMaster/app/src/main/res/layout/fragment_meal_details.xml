@@ -4,11 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".view.fragments.meal_details.MealDetailsFragment">
 
     <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_width="410dp"
+        android:layout_height="656dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnAddToFav"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -29,7 +34,6 @@
                     android:scaleType="centerCrop"
                     app:srcCompat="@drawable/ic_launcher_background" />
 
-                <!-- Gradient Overlay at the bottom of the image -->
                 <View
                     android:id="@+id/imgGradient"
                     android:layout_width="match_parent"
@@ -37,7 +41,6 @@
                     android:layout_gravity="bottom"
                     android:background="@drawable/overlay_gradient" />
 
-                <!-- Meal Name Text on top of the image -->
                 <TextView
                     android:id="@+id/txtMealName"
                     android:layout_width="wrap_content"
@@ -46,30 +49,16 @@
                     android:layout_marginBottom="10dp"
                     android:text="Meal Name"
                     android:textColor="@android:color/white"
-                    android:textSize="24sp" />
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
 
                 <!-- Favorite Button on the Top Left -->
-                <ImageButton
-                    android:id="@+id/btnFav"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="top|start"
-                    android:layout_margin="10dp"
-                    app:srcCompat="@drawable/ic_fav" />
 
                 <!-- Plan Button on the Top Right -->
-                <ImageButton
-                    android:id="@+id/btnPlan"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="top|end"
-                    android:layout_margin="10dp"
-                    app:srcCompat="@drawable/ic_plan" />
 
             </FrameLayout>
 
-
-            <!-- Icon ImageView (imageView2) -->
+            <!-- Icon ImageView -->
             <ImageView
                 android:id="@+id/imgCountry"
                 android:layout_width="66dp"
@@ -77,26 +66,19 @@
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="20dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/ImageFrame"
-                app:srcCompat="@drawable/ic_launcher_background" />
+                app:layout_constraintTop_toBottomOf="@id/ImageFrame" />
 
-            <!-- TextView next to Icon (textView4) -->
-
-            <!-- New TextView between imgCountry and YouTubePlayerView -->
-
-            <!-- YouTube Player, constrained below the new TextView -->
-
-            <!-- Additional TextView (textView3) below YouTube player -->
-
+            <!-- Country Name TextView -->
             <TextView
                 android:id="@+id/txtCountry"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="35dp"
                 android:layout_marginTop="20dp"
-                android:text="TextView"
+                android:text="Country Name"
                 android:textColor="@color/black"
                 android:textSize="20sp"
+                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imgCountry" />
 
@@ -105,7 +87,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="92dp"
-                android:text="Text View"
+                android:text="Meal Category"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="@+id/imgCountry"
@@ -122,7 +104,6 @@
                 android:layout_marginEnd="30dp"
                 app:autoPlay="false"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txtCountry" />
 
@@ -132,14 +113,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="20dp"
-                android:fontFamily="sans-serif-black"
+                android:fontFamily="sans-serif-bold"
                 android:text="Ingredients"
                 android:textColor="@color/black"
                 android:textSize="24sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/video" />
 
-            <!-- RecyclerView added below the additional text -->
+            <!-- RecyclerView for Ingredients -->
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/IngRecyclerView"
                 android:layout_width="match_parent"
@@ -151,7 +132,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/textView3" />
 
-            <!-- Title TextView below RecyclerView -->
+            <!-- Title TextView for Steps -->
             <TextView
                 android:id="@+id/txtSteps"
                 android:layout_width="wrap_content"
@@ -165,7 +146,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/IngRecyclerView" />
 
-            <!-- Multi-line TextView below the Title -->
+            <!-- Multi-line TextView for Steps -->
             <TextView
                 android:id="@+id/steps"
                 android:layout_width="match_parent"
@@ -175,7 +156,7 @@
                 android:layout_marginEnd="30dp"
                 android:gravity="start"
                 android:scrollbars="vertical"
-                android:text="TextView"
+                android:text="Detailed steps will be listed here."
                 android:textColor="@color/black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -189,9 +170,52 @@
                 android:text="Video"
                 android:textColor="@color/black"
                 android:textSize="20sp"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@+id/video"
                 app:layout_constraintStart_toStartOf="@+id/video" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
+    <!-- Add to Fav Button -->
+    <Button
+        android:id="@+id/btnAddToFav"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="20dp"
+        android:textAllCaps="false"
+        android:background="@drawable/button_background"
+        android:drawableLeft="@drawable/ic_fav"
+        android:drawablePadding="8dp"
+        android:minWidth="120dp"
+        android:minHeight="48dp"
+        android:padding="12dp"
+        android:text="Add to Fav"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- Add to Plan Button -->
+    <Button
+        android:id="@+id/btnAddToPlan"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="20dp"
+        android:textAllCaps="false"
+        android:background="@drawable/button_background"
+        android:drawableLeft="@drawable/ic_plan"
+        android:drawablePadding="8dp"
+        android:minWidth="120dp"
+        android:minHeight="48dp"
+        android:padding="12dp"
+        android:text="Add to Plan"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -10,8 +10,11 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.mealmaster.R;
 import com.example.mealmaster.model.database.DTOs.IngredientListDTO;
+import com.example.mealmaster.view.fragments.search.OnIngredientListener;
 import com.example.mealmaster.view.fragments.search.OnSearchClickListener;
 
 import java.util.List;
@@ -20,8 +23,8 @@ public class IngredientListAdapter extends RecyclerView.Adapter<IngredientListAd
 
     private List<IngredientListDTO> ingredients;
     private Context context;
-    private OnSearchClickListener listener;
-    public IngredientListAdapter(List<IngredientListDTO> ingredients, Context context,OnSearchClickListener listener) {
+    private OnIngredientListener listener;
+    public IngredientListAdapter(List<IngredientListDTO> ingredients, Context context,OnIngredientListener listener) {
         this.ingredients = ingredients;
         this.context = context;
         this.listener = listener;
@@ -48,7 +51,9 @@ public class IngredientListAdapter extends RecyclerView.Adapter<IngredientListAd
         });
         Glide.with(context)
                 .load("https://www.themealdb.com/images/ingredients/"+holder.txtIngredient.getText()+".png")
-                .placeholder(R.drawable.ic_launcher_background)
+                .apply(new RequestOptions().override(150, 150))
+                .placeholder(R.drawable.placeholder)
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(holder.imgIngredient);
     }
 

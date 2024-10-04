@@ -6,67 +6,95 @@
     android:layout_height="match_parent"
     tools:context=".view.fragments.weekly_plan.WeeklyPlanFragment">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="#8C5B18"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <TextView
+            android:id="@+id/toolbarTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_marginStart="16dp"
+            android:text="Weekly Plan"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
+    </androidx.appcompat.widget.Toolbar>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:padding="16dp"
-        android:gravity="center_horizontal">
+        android:gravity="center_horizontal"
+        android:layout_marginTop="?attr/actionBarSize">
 
-        <!-- Title Text -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Weekly Plan"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:layout_marginBottom="20dp"/>
-
-        <!-- Button for each day of the week -->
         <Button
             android:id="@+id/btnSaturday"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Saturday" />
+            android:text="Saturday"
+            android:background="@drawable/button_background"
+            android:textColor="#FFFFFF"
+            android:layout_marginTop="50dp"
+        android:layout_marginBottom="20dp"/>
 
         <Button
             android:id="@+id/btnSunday"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Sunday" />
+            android:text="Sunday"
+            android:background="@drawable/button_background"
+            android:textColor="#FFFFFF"
+        android:layout_marginBottom="20dp"/>
 
         <Button
             android:id="@+id/btnMonday"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Monday" />
+            android:text="Monday"
+            android:background="@drawable/button_background"
+            android:textColor="#FFFFFF"
+        android:layout_marginBottom="20dp"/>
 
         <Button
             android:id="@+id/btnTuesday"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Tuesday" />
+            android:text="Tuesday"
+            android:background="@drawable/button_background"
+            android:textColor="#FFFFFF"
+        android:layout_marginBottom="20dp"/>
 
         <Button
             android:id="@+id/btnWednesday"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Wednesday" />
+            android:text="Wednesday"
+            android:background="@drawable/button_background"
+            android:textColor="#FFFFFF"
+        android:layout_marginBottom="20dp"/>
 
         <Button
             android:id="@+id/btnThursday"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Thursday" />
+            android:text="Thursday"
+            android:background="@drawable/button_background"
+            android:textColor="#FFFFFF"
+        android:layout_marginBottom="20dp"/>
 
         <Button
             android:id="@+id/btnFriday"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Friday" />
+            android:text="Friday"
+            android:background="@drawable/button_background"
+            android:textColor="#FFFFFF"/>
 
     </LinearLayout>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

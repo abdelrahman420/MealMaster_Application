@@ -9,6 +9,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.mealmaster.R;
 import com.example.mealmaster.model.database.DTOs.IngredientDTO;
 
@@ -28,7 +30,7 @@ public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.In
     @NonNull
     @Override
     public IngredientViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_ingredient, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_ingredient, parent, false);
         return new IngredientViewHolder(view);
     }
 
@@ -42,7 +44,9 @@ public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.In
 
         Glide.with(context)
                 .load("https://www.themealdb.com/images/ingredients/"+holder.ingredientName.getText()+".png")
-                .placeholder(R.drawable.ic_launcher_background)
+                .apply(new RequestOptions().override(150, 150))
+                .placeholder(R.drawable.placeholder)
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(holder.ingredientImage);
     }
 
