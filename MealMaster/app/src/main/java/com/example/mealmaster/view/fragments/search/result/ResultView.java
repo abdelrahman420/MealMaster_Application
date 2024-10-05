@@ -1,6 +1,4 @@
-package com.example.mealmaster.view.fragments.search;
-
-import androidx.lifecycle.LiveData;
+package com.example.mealmaster.view.fragments.search.result;
 
 import com.example.mealmaster.model.database.DTOs.MealDTO;
 

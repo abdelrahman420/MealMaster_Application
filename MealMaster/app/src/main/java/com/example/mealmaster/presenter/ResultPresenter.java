@@ -1,8 +1,7 @@
 package com.example.mealmaster.presenter;
 
 import com.example.mealmaster.model.repsitory.MealRepository;
-import com.example.mealmaster.view.fragments.favourite_meals.FavFragmentView;
-import com.example.mealmaster.view.fragments.search.ResultView;
+import com.example.mealmaster.view.fragments.search.result.ResultView;
 
 public class ResultPresenter {
     ResultView resultView;

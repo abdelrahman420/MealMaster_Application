@@ -21,19 +21,22 @@ import com.example.mealmaster.model.database.LocalDataSourceImpl;
 import com.example.mealmaster.model.network.RemoteDataSourceImpl;
 import com.example.mealmaster.model.repsitory.MealRepository;
 import com.example.mealmaster.model.repsitory.MealRepositoryImpl;
+import com.example.mealmaster.presenter.DayMealsPresenter;
 import com.example.mealmaster.view.adapter.WeeklyPlanAdapter;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class DayMealsFragment extends Fragment {
+public class DayMealsFragment extends Fragment implements DayMealsView, OnRmvClickListeer {
 
     private TextView txtDay;
     private String selectedDay;
     private RecyclerView recyclerView;
     private WeeklyPlanAdapter adapter;
-    private MealRepository repository;
+    private DayMealsPresenter dayMealsPresenter;
+
     public DayMealsFragment() {
         // Required empty public constructor
     }
@@ -41,7 +44,7 @@ public class DayMealsFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         selectedDay = getArguments().getString("selected_day");
-        repository = MealRepositoryImpl.getInstance(RemoteDataSourceImpl.getInstance(), LocalDataSourceImpl.getInstance(getContext()));
+        dayMealsPresenter = new DayMealsPresenter(this, MealRepositoryImpl.getInstance(RemoteDataSourceImpl.getInstance(), LocalDataSourceImpl.getInstance(getContext())));
         super.onCreate(savedInstanceState);
     }
 
@@ -56,17 +59,17 @@ public class DayMealsFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         txtDay = view.findViewById(R.id.txtDay);
-        txtDay.setText("Meals for "+selectedDay);
-        LiveData<List<MealPlanDTO>> mealsList = repository._getMealsByDate(selectedDay);
+        txtDay.setText("Meals for " + selectedDay);
         recyclerView = view.findViewById(R.id.dayRecyclerView);
-        recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 3));
-        adapter = new WeeklyPlanAdapter(getContext(), new ArrayList<>(), getActivity().getSupportFragmentManager(),repository);
+        recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
+        adapter = new WeeklyPlanAdapter(getContext(), new ArrayList<>(), getActivity().getSupportFragmentManager(), this);
         recyclerView.setAdapter(adapter);
-        showMeals(mealsList);
+        dayMealsPresenter.getDayMeals(selectedDay);
 
     }
 
-    public void showMeals(LiveData<List<MealPlanDTO>> meals) {
+    @Override
+    public void showDayMeals(LiveData<List<MealPlanDTO>> meals) {
         Observer<List<MealPlanDTO>> observer = new Observer<List<MealPlanDTO>>() {
             @Override
             public void onChanged(List<MealPlanDTO> meals) {
@@ -74,8 +77,22 @@ public class DayMealsFragment extends Fragment {
                 adapter.notifyDataSetChanged();
             }
         };
-
         meals.observe(getViewLifecycleOwner(), observer);
     }
 
+    @Override
+    public void OnDayMealRmv(MealPlanDTO meal) {
+        dayMealsPresenter.deleteMeal(meal);
+        adapter.notifyDataSetChanged();
+
+        Snackbar snackbar = Snackbar.make(getView(), meal.getStrMeal() + " Removed", Snackbar.LENGTH_LONG);
+        snackbar.setAction("Undo", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dayMealsPresenter.addToDay(meal);
+                adapter.notifyDataSetChanged();
+            }
+        });
+        snackbar.show();
+    }
 }

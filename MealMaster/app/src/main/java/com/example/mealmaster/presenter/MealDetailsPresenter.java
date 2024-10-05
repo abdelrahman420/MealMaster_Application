@@ -44,16 +44,16 @@ public class MealDetailsPresenter {
         int day = calendar.get(Calendar.DAY_OF_MONTH);
 
         Calendar startOfWeek = (Calendar) calendar.clone();
-        startOfWeek.set(Calendar.DAY_OF_WEEK, Calendar.SATURDAY);
+        startOfWeek.set(Calendar.DAY_OF_WEEK, Calendar.SUNDAY);
 
         Calendar endOfWeek = (Calendar) calendar.clone();
-        endOfWeek.set(Calendar.DAY_OF_WEEK, Calendar.FRIDAY);
+        endOfWeek.set(Calendar.DAY_OF_WEEK, Calendar.SATURDAY);
 
         DatePickerDialog datePickerDialog = new DatePickerDialog(
                 context,
                 view::onDateSet,
                 year, month, day);
-        datePickerDialog.getDatePicker().setMinDate(calendar.getTimeInMillis());
+        datePickerDialog.getDatePicker().setMinDate(startOfWeek.getTimeInMillis());
         datePickerDialog.getDatePicker().setMaxDate(endOfWeek.getTimeInMillis());
         datePickerDialog.show();
     }

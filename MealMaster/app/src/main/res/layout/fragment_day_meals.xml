@@ -5,15 +5,18 @@
     android:id="@+id/DayLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.fragments.search.ResultFragment">
+    tools:context=".view.fragments.search.result.ResultFragment">
 
     <!-- Toolbar for displaying the day -->
+
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
+        android:layout_marginTop="25dp"
         android:background="#8C5B18"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="0dp">
 
         <TextView
             android:id="@+id/txtDay"

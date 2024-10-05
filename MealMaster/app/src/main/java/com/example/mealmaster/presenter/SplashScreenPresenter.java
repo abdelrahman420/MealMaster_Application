@@ -20,7 +20,7 @@ public class SplashScreenPresenter {
                 public void run() {
                     view.navigateToMainActivity();
                 }
-            }, 6000); // 6 seconds delay
+            }, 3000);
         }
 
 }

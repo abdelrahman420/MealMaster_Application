@@ -9,6 +9,7 @@ import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 
 import com.example.mealmaster.model.database.DTOs.MealDTO;
+import com.example.mealmaster.model.database.DTOs.MealPlanDTO;
 
 import java.util.List;
 
@@ -22,5 +23,10 @@ public interface FavMealDAO {
 
     @Delete
     void deleteMeal(MealDTO meal);
+
+
+    @Query("SELECT * FROM meals WHERE idMeal = :idMeal")
+    MealDTO getMealById(String idMeal);
+
 
 }

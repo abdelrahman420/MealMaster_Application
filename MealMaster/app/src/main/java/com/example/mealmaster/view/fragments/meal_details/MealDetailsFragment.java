@@ -6,6 +6,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.LiveData;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -20,6 +21,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.mealmaster.R;
 import com.example.mealmaster.model.database.DTOs.IngredientDTO;
 import com.example.mealmaster.model.database.DTOs.MealDTO;
@@ -57,6 +60,7 @@ public class MealDetailsFragment extends Fragment implements MealDetailsView, Da
     List<String> ingredientMeasures;
     private Button btnAdd;
     private Button btnPlan;
+    LiveData<List<MealPlanDTO>> meals;
 
     public MealDetailsFragment() {
         // Required empty public constructor
@@ -128,21 +132,24 @@ public class MealDetailsFragment extends Fragment implements MealDetailsView, Da
         });
         Glide.with(this)
                 .load(meal.getStrMealThumb())
-                .placeholder(R.drawable.ic_launcher_background) // Placeholder image
+                .placeholder(R.drawable.placeholder)
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(mealImage);
         String areaName = meal.getStrArea().toLowerCase().replace(" ", "_").replaceAll("[^a-zA-Z0-9_]", ""); // Format area name
         int imageResId = getContext().getResources().getIdentifier(areaName, "drawable", getContext().getPackageName());
         Glide.with(this)
                 .load(imageResId)
-                .placeholder(R.drawable.ic_launcher_background) // Placeholder image
+                .apply(new RequestOptions().override(150, 150))
+                .placeholder(R.drawable.placeholder)
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(areaImage);
+
 
     }
 
     @Override
     public void OnAddToFav(MealDTO meal) {
         presenter.addMealToFavorites(meal);
-        Toast.makeText(getContext(), meal.getStrMeal() + "is added to favourites", Toast.LENGTH_SHORT).show();
     }
 
     @Override

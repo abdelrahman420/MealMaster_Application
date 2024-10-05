@@ -23,7 +23,7 @@ import com.example.mealmaster.model.network.RemoteDataSourceImpl;
 import com.example.mealmaster.model.repsitory.MealRepositoryImpl;
 import com.example.mealmaster.presenter.FilterCategoryPresenter;
 import com.example.mealmaster.view.adapter.CategoryListAdapter;
-import com.example.mealmaster.view.fragments.search.ResultFragment;
+import com.example.mealmaster.view.fragments.search.result.ResultFragment;
 
 import java.util.ArrayList;
 import java.util.List;

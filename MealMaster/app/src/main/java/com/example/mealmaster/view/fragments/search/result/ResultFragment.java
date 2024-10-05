@@ -1,4 +1,4 @@
-package com.example.mealmaster.view.fragments.search;
+package com.example.mealmaster.view.fragments.search.result;
 
 import android.os.Bundle;
 
@@ -58,7 +58,7 @@ public class ResultFragment extends Fragment implements ResultView {
         resultAdapter = new ResultAdapter(getContext(), meals, fragmentManager);
 
 
-        resultRecyclerView.setLayoutManager(new GridLayoutManager(getContext(), 3));
+        resultRecyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
         resultRecyclerView.setAdapter(resultAdapter);
 
     }

@@ -7,14 +7,16 @@
     tools:context=".view.fragments.search.filter_by_category.FilterByCategoryFragment">
 
     <!-- Toolbar with "Filter By Category" text -->
+
+    <!-- Label for the categories section -->
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="#8C5B18"
         android:elevation="4dp"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
-
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        android:layout_marginTop="25dp">
         <TextView
             android:id="@+id/toolbarTitle"
             android:layout_width="wrap_content"
@@ -24,9 +26,9 @@
             android:text="Filter By Country"
             android:textColor="#FFFFFF"
             android:textSize="20sp" />
+
     </androidx.appcompat.widget.Toolbar>
 
-    <!-- Label for the categories section -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

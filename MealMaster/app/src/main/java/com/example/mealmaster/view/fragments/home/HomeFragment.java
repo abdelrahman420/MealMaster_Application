@@ -25,15 +25,18 @@ import com.example.mealmaster.model.database.DTOs.MealDTO;
 import com.example.mealmaster.model.database.LocalDataSourceImpl;
 import com.example.mealmaster.model.network.RemoteDataSourceImpl;
 import com.example.mealmaster.model.repsitory.MealRepositoryImpl;
+import com.example.mealmaster.presenter.FilterCategoryPresenter;
 import com.example.mealmaster.presenter.HomePresenter;
 import com.example.mealmaster.view.adapter.CategoryListAdapter;
 import com.example.mealmaster.view.fragments.meal_details.MealDetailsFragment;
+import com.example.mealmaster.view.fragments.search.filter_by_category.FilterByCategoryView;
 import com.example.mealmaster.view.fragments.search.filter_by_category.OnCategoryListener;
+import com.example.mealmaster.view.fragments.search.result.ResultFragment;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class HomeFragment extends Fragment implements HomeFragmentView ,OnMealCLickListener{
+public class HomeFragment extends Fragment implements HomeFragmentView ,OnMealCLickListener,FilterByCategoryView,OnCategoryListener{
 
     private RecyclerView recyclerView;
     private CategoryListAdapter categoryListAdapter;
@@ -41,14 +44,14 @@ public class HomeFragment extends Fragment implements HomeFragmentView ,OnMealCL
     private TextView txtMeal;
     private ImageView imgTodaysMeal;
     private MealDTO todaysMeal;
-    private OnCategoryListener listener;
+   FilterCategoryPresenter filterCategoryPresenter;
 
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         presenter = new HomePresenter(this, MealRepositoryImpl.getInstance(RemoteDataSourceImpl.getInstance(), LocalDataSourceImpl.getInstance(getContext())),this);
-
+        filterCategoryPresenter = new FilterCategoryPresenter(this, MealRepositoryImpl.getInstance(RemoteDataSourceImpl.getInstance(), LocalDataSourceImpl.getInstance(getContext())));
     }
 
     @Override
@@ -64,7 +67,7 @@ public class HomeFragment extends Fragment implements HomeFragmentView ,OnMealCL
         recyclerView = view.findViewById(R.id.recyclerview);
         txtMeal = view.findViewById(R.id.txtTodaysMeal);
         imgTodaysMeal = view.findViewById(R.id.imgTodaysMeal);
-        categoryListAdapter = new CategoryListAdapter(new ArrayList<>(), getContext(),listener);
+        categoryListAdapter = new CategoryListAdapter(new ArrayList<>(), getContext(),this);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(categoryListAdapter);
         imgTodaysMeal.setOnClickListener(new View.OnClickListener() {
@@ -106,6 +109,24 @@ public class HomeFragment extends Fragment implements HomeFragmentView ,OnMealCL
     }
 
     @Override
+    public void displayAllCategories(List<CategoriesDTO> categories) {
+
+    }
+
+    @Override
+    public void displaySearchResults(List<MealDTO> meals) {
+        ResultFragment resultFragment = new ResultFragment();
+        Bundle bundle = new Bundle();
+        bundle.putParcelableArrayList("SearchMeals", new ArrayList<>(meals));
+        resultFragment.setArguments(bundle);
+        FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.frameLayout, resultFragment);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
+    }
+
+    @Override
     public void showError(String message) {
         Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
     }
@@ -123,4 +144,8 @@ public class HomeFragment extends Fragment implements HomeFragmentView ,OnMealCL
         fragmentTransaction.commit();
     }
 
+    @Override
+    public void onCategoryListener(String category) {
+        filterCategoryPresenter.getMealByCategory(category);
+    }
 }

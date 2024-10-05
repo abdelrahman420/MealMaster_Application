@@ -22,6 +22,7 @@ import com.example.mealmaster.model.database.DTOs.MealDTO;
 import com.example.mealmaster.model.database.DTOs.MealPlanDTO;
 import com.example.mealmaster.model.repsitory.MealRepository;
 import com.example.mealmaster.view.fragments.meal_details.MealDetailsFragment;
+import com.example.mealmaster.view.fragments.weekly_plan.OnRmvClickListeer;
 
 import java.util.List;
 
@@ -29,13 +30,13 @@ public class WeeklyPlanAdapter extends RecyclerView.Adapter<WeeklyPlanAdapter.Vi
     private Context context;
     private List<MealPlanDTO> mealsList;
     private FragmentManager fragmentManager;
-    private MealRepository repository;
+    private OnRmvClickListeer onRmvClickListeer;
 
-    public WeeklyPlanAdapter(Context context, List<MealPlanDTO> mealsList,FragmentManager fragmentManager,MealRepository repository) {
+    public WeeklyPlanAdapter(Context context, List<MealPlanDTO> mealsList,FragmentManager fragmentManager,OnRmvClickListeer onRmvClickListeer) {
         this.context = context;
         this.mealsList = mealsList;
         this.fragmentManager = fragmentManager;
-        this.repository = repository;
+        this.onRmvClickListeer = onRmvClickListeer;
     }
 
     @NonNull
@@ -76,10 +77,7 @@ public class WeeklyPlanAdapter extends RecyclerView.Adapter<WeeklyPlanAdapter.Vi
         holder.btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                repository._deleteFromMealPlan(meal);
-                mealsList.remove(currentPosition);
-                notifyItemRemoved(currentPosition);
-                notifyItemRangeChanged(currentPosition, mealsList.size()); // Optional: Update remaining items' positions
+                onRmvClickListeer.OnDayMealRmv(meal);
             }
         });
     }

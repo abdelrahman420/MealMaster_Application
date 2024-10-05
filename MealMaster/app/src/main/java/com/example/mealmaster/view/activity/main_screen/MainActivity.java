@@ -1,6 +1,10 @@
 package com.example.mealmaster.view.activity.main_screen;
 
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -34,6 +38,15 @@ public class MainActivity extends AppCompatActivity implements MainScreenView{
             presenter.onNavigationItemSelected(item.getItemId());
             return true;
         });
+
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+
+        if (activeNetworkInfo != null && activeNetworkInfo.isConnected()) {
+            Toast.makeText(this, "You are connected To Network", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "There is no internet connection you can view your favourite meals and your weekly plan.", Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void replaceFragment(Fragment fragment)
@@ -43,5 +56,6 @@ public class MainActivity extends AppCompatActivity implements MainScreenView{
         fragmentTransaction.replace(R.id.frameLayout,fragment);
         fragmentTransaction.commit();
     }
+
 
 }
