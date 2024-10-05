@@ -3,13 +3,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
+    android:backgroundTint="@color/white"
     android:fillViewport="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/WeeklyPlan"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#FFFFFF"
+        android:background="@color/white"
+
         tools:context=".view.fragments.home.HomeFragment">
 
         <!-- Toolbar with MealMaster text -->
@@ -17,9 +20,9 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#8C5B18"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="25dp">
+            android:layout_marginTop="25dp"
+            android:background="@color/brown"
+            app:layout_constraintTop_toTopOf="parent">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -27,9 +30,10 @@
                 android:layout_gravity="start"
                 android:padding="16dp"
                 android:text="MealMaster"
-                android:textColor="#FFFFFF"
+                android:textColor="@color/white"
                 android:textSize="20sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                tools:layout_editor_absoluteX="16dp" />
         </androidx.appcompat.widget.Toolbar>
 
         <!-- Text above the image -->
@@ -40,7 +44,7 @@
             android:layout_marginStart="20dp"
             android:layout_marginTop="18dp"
             android:text="@string/daily_inspiration"
-            android:textColor="#8C5B18"
+            android:textColor="@color/brown"
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/toolbar" />
@@ -97,7 +101,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="@string/categories"
-            android:textColor="#8C5B18"
+            android:textColor="@color/brown"
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="@+id/txtMealofTheDay"
             app:layout_constraintTop_toBottomOf="@+id/cardViewMeal" />
@@ -107,7 +111,7 @@
             android:id="@+id/recyclerview"
             android:layout_width="415dp"
             android:layout_height="784dp"
-            android:background="#F9F9F9"
+            android:background="@color/light_gray"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"

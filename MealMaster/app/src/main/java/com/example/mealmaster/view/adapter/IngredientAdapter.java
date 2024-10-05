@@ -12,7 +12,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.mealmaster.R;
-import com.example.mealmaster.model.database.DTOs.IngredientDTO;
+import com.example.mealmaster.model.DTOs.IngredientDTO;
 
 import java.util.List;
 
@@ -20,8 +20,6 @@ public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.In
 
     private Context context;
     private List<IngredientDTO> ingredientsList;
-
-    // Constructor for the adapter
     public IngredientAdapter(Context context, List<IngredientDTO> ingredientsList) {
         this.context = context;
         this.ingredientsList = ingredientsList;
@@ -38,13 +36,11 @@ public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.In
     public void onBindViewHolder(@NonNull IngredientViewHolder holder, int position) {
         IngredientDTO ingredient = ingredientsList.get(position);
 
-        // Bind the ingredient name and image using Glide
         holder.ingredientName.setText(ingredient.getName());
         holder.ingredientMeasure.setText(ingredient.getMeasure());
 
         Glide.with(context)
-                .load("https://www.themealdb.com/images/ingredients/"+holder.ingredientName.getText()+".png")
-                .apply(new RequestOptions().override(150, 150))
+                .load("https://www.themealdb.com/images/ingredients/"+holder.ingredientName.getText()+"-Small.png")
                 .placeholder(R.drawable.placeholder)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(holder.ingredientImage);

@@ -1,6 +1,6 @@
-package com.example.mealmaster.model.network.Responses;
+package com.example.mealmaster.model.Responses;
 
-import com.example.mealmaster.model.database.DTOs.FilterMealDTO;
+import com.example.mealmaster.model.DTOs.FilterMealDTO;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;

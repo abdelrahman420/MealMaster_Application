@@ -1,9 +1,9 @@
-package com.example.mealmaster.model.repsitory;
+package com.example.mealmaster.model.repository;
 
 import androidx.lifecycle.LiveData;
 
-import com.example.mealmaster.model.database.DTOs.MealDTO;
-import com.example.mealmaster.model.database.DTOs.MealPlanDTO;
+import com.example.mealmaster.model.DTOs.MealDTO;
+import com.example.mealmaster.model.DTOs.MealPlanDTO;
 import com.example.mealmaster.model.network.NetworkCall;
 
 import java.util.List;

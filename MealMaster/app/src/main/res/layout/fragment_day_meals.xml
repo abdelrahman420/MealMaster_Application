@@ -5,6 +5,8 @@
     android:id="@+id/DayLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
+    android:backgroundTint="@color/white"
     tools:context=".view.fragments.search.result.ResultFragment">
 
     <!-- Toolbar for displaying the day -->
@@ -14,7 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:layout_marginTop="25dp"
-        android:background="#8C5B18"
+        android:background="@color/brown"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="0dp">
 
@@ -24,15 +26,19 @@
             android:layout_height="wrap_content"
             android:layout_gravity="top"
             android:fontFamily="sans-serif"
-            android:textColor="#FFFFFF"
+            android:textColor="@color/white"
             android:textSize="24sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="12dp" />
     </androidx.appcompat.widget.Toolbar>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/dayRecyclerView"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:background="@color/light_gray"
+        android:backgroundTint="@color/light_gray"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -1,9 +1,7 @@
 package com.example.mealmaster.presenter;
 
-import com.example.mealmaster.model.database.DTOs.MealDTO;
-import com.example.mealmaster.model.database.DTOs.MealPlanDTO;
-import com.example.mealmaster.model.repsitory.MealRepository;
-import com.example.mealmaster.view.fragments.favourite_meals.FavFragmentView;
+import com.example.mealmaster.model.DTOs.MealPlanDTO;
+import com.example.mealmaster.model.repository.MealRepository;
 import com.example.mealmaster.view.fragments.weekly_plan.DayMealsView;
 
 public class DayMealsPresenter {

@@ -1,5 +1,5 @@
-package com.example.mealmaster.model.network.Responses;
-import com.example.mealmaster.model.database.DTOs.IngredientListDTO;
+package com.example.mealmaster.model.Responses;
+import com.example.mealmaster.model.DTOs.IngredientListDTO;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;

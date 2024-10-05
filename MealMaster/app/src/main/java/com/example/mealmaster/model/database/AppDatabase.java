@@ -6,8 +6,8 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
-import com.example.mealmaster.model.database.DTOs.MealDTO;
-import com.example.mealmaster.model.database.DTOs.MealPlanDTO;
+import com.example.mealmaster.model.DTOs.MealDTO;
+import com.example.mealmaster.model.DTOs.MealPlanDTO;
 
 
 @Database(entities = {MealDTO.class, MealPlanDTO.class}, version = 3, exportSchema = false)
@@ -21,7 +21,6 @@ public abstract class AppDatabase extends RoomDatabase {
         if (instance == null) {
             instance = Room.databaseBuilder(context.getApplicationContext(), AppDatabase.class, "meals_database")
                     .fallbackToDestructiveMigration().build();
-
         }
         return instance;
     }

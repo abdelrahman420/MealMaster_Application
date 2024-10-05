@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:layout_marginTop="25dp"
-        android:background="#8C5B18"
+        android:background="@color/brown"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -20,10 +20,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="start"
-            android:layout_marginStart="16dp"
             android:text="Weekly Plan"
-            android:textColor="#FFFFFF"
-            android:textSize="20sp" />
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="15dp" />
     </androidx.appcompat.widget.Toolbar>
 
     <LinearLayout
@@ -38,64 +39,64 @@
             android:id="@+id/btnSaturday"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Saturday"
-            android:background="@drawable/button_background"
-            android:textColor="#FFFFFF"
             android:layout_marginTop="50dp"
-        android:layout_marginBottom="20dp"/>
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/button_background"
+            android:text="Saturday"
+            android:textColor="@color/white" />
 
         <Button
             android:id="@+id/btnSunday"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Sunday"
+            android:layout_marginBottom="20dp"
             android:background="@drawable/button_background"
-            android:textColor="#FFFFFF"
-        android:layout_marginBottom="20dp"/>
+            android:text="Sunday"
+            android:textColor="@color/white" />
 
         <Button
             android:id="@+id/btnMonday"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Monday"
+            android:layout_marginBottom="20dp"
             android:background="@drawable/button_background"
-            android:textColor="#FFFFFF"
-        android:layout_marginBottom="20dp"/>
+            android:text="Monday"
+            android:textColor="@color/white" />
 
         <Button
             android:id="@+id/btnTuesday"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Tuesday"
+            android:layout_marginBottom="20dp"
             android:background="@drawable/button_background"
-            android:textColor="#FFFFFF"
-        android:layout_marginBottom="20dp"/>
+            android:text="Tuesday"
+            android:textColor="@color/white" />
 
         <Button
             android:id="@+id/btnWednesday"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Wednesday"
+            android:layout_marginBottom="20dp"
             android:background="@drawable/button_background"
-            android:textColor="#FFFFFF"
-        android:layout_marginBottom="20dp"/>
+            android:text="Wednesday"
+            android:textColor="@color/white" />
 
         <Button
             android:id="@+id/btnThursday"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Thursday"
+            android:layout_marginBottom="20dp"
             android:background="@drawable/button_background"
-            android:textColor="#FFFFFF"
-        android:layout_marginBottom="20dp"/>
+            android:text="Thursday"
+            android:textColor="@color/white" />
 
         <Button
             android:id="@+id/btnFriday"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Friday"
             android:background="@drawable/button_background"
-            android:textColor="#FFFFFF"/>
+            android:text="Friday"
+            android:textColor="@color/white" />
 
     </LinearLayout>
 

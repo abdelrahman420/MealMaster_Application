@@ -1,4 +1,4 @@
-package com.example.mealmaster.model.database.DTOs;
+package com.example.mealmaster.model.DTOs;
 
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -9,14 +9,13 @@ import androidx.room.PrimaryKey;
 
 import com.google.gson.annotations.SerializedName;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 
-@Entity(tableName = "meals_plan" , primaryKeys = {"idMeal", "date"})
-public class MealPlanDTO implements Parcelable {
-
+@Entity(tableName = "meals" )
+public class MealDTO implements Parcelable {
+    @PrimaryKey
     @NonNull
     @SerializedName("idMeal")
     String idMeal;
@@ -177,126 +176,7 @@ public class MealPlanDTO implements Parcelable {
     @SerializedName("dateModified")
     String dateModified;
 
-    @NonNull
-    String date;
-
-    public MealDTO convertToMealDTO(MealPlanDTO mealPlan) {
-        return new MealDTO(
-                mealPlan.idMeal,
-                mealPlan.strMeal,
-                mealPlan.strDrinkAlternate,
-                mealPlan.strCategory,
-                mealPlan.strArea,
-                mealPlan.strInstructions,
-                mealPlan.strMealThumb,
-                mealPlan.strTags,
-                mealPlan.strYoutube,
-                mealPlan.strIngredient1,
-                mealPlan.strIngredient2,
-                mealPlan.strIngredient3,
-                mealPlan.strIngredient4,
-                mealPlan.strIngredient5,
-                mealPlan.strIngredient6,
-                mealPlan.strIngredient7,
-                mealPlan.strIngredient8,
-                mealPlan.strIngredient9,
-                mealPlan.strIngredient10,
-                mealPlan.strIngredient11,
-                mealPlan.strIngredient12,
-                mealPlan.strIngredient13,
-                mealPlan.strIngredient14,
-                mealPlan.strIngredient15,
-                mealPlan.strIngredient16,
-                mealPlan.strIngredient17,
-                mealPlan.strIngredient18,
-                mealPlan.strIngredient19,
-                mealPlan.strIngredient20,
-                mealPlan.strMeasure1,
-                mealPlan.strMeasure2,
-                mealPlan.strMeasure3,
-                mealPlan.strMeasure4,
-                mealPlan.strMeasure5,
-                mealPlan.strMeasure6,
-                mealPlan.strMeasure7,
-                mealPlan.strMeasure8,
-                mealPlan.strMeasure9,
-                mealPlan.strMeasure10,
-                mealPlan.strMeasure11,
-                mealPlan.strMeasure12,
-                mealPlan.strMeasure13,
-                mealPlan.strMeasure14,
-                mealPlan.strMeasure15,
-                mealPlan.strMeasure16,
-                mealPlan.strMeasure17,
-                mealPlan.strMeasure18,
-                mealPlan.strMeasure19,
-                mealPlan.strMeasure20,
-                mealPlan.strSource,
-                mealPlan.strImageSource,
-                mealPlan.strCreativeCommonsConfirmed,
-                mealPlan.dateModified
-        );
-    }
-
-    // Constructor
-    public MealPlanDTO(MealDTO meal, String date) {
-        this.idMeal = meal.idMeal;
-        this.strMeal = meal.strMeal;
-        this.strDrinkAlternate = meal.strDrinkAlternate;
-        this.strCategory = meal.strCategory;
-        this.strArea = meal.strArea;
-        this.strInstructions = meal.strInstructions;
-        this.strMealThumb = meal.strMealThumb;
-        this.strTags = meal.strTags;
-        this.strYoutube = meal.strYoutube;
-        this.strIngredient1 = meal.strIngredient1;
-        this.strIngredient2 = meal.strIngredient2;
-        this.strIngredient3 = meal.strIngredient3;
-        this.strIngredient4 = meal.strIngredient4;
-        this.strIngredient5 = meal.strIngredient5;
-        this.strIngredient6 = meal.strIngredient6;
-        this.strIngredient7 = meal.strIngredient7;
-        this.strIngredient8 = meal.strIngredient8;
-        this.strIngredient9 = meal.strIngredient9;
-        this.strIngredient10 = meal.strIngredient10;
-        this.strIngredient11 = meal.strIngredient11;
-        this.strIngredient12 = meal.strIngredient12;
-        this.strIngredient13 = meal.strIngredient13;
-        this.strIngredient14 = meal.strIngredient14;
-        this.strIngredient15 = meal.strIngredient15;
-        this.strIngredient16 = meal.strIngredient16;
-        this.strIngredient17 = meal.strIngredient17;
-        this.strIngredient18 = meal.strIngredient18;
-        this.strIngredient19 = meal.strIngredient19;
-        this.strIngredient20 = meal.strIngredient20;
-        this.strMeasure1 = meal.strMeasure1;
-        this.strMeasure2 = meal.strMeasure2;
-        this.strMeasure3 = meal.strMeasure3;
-        this.strMeasure4 = meal.strMeasure4;
-        this.strMeasure5 = meal.strMeasure5;
-        this.strMeasure6 = meal.strMeasure6;
-        this.strMeasure7 = meal.strMeasure7;
-        this.strMeasure8 = meal.strMeasure8;
-        this.strMeasure9 = meal.strMeasure9;
-        this.strMeasure10 = meal.strMeasure10;
-        this.strMeasure11 = meal.strMeasure11;
-        this.strMeasure12 = meal.strMeasure12;
-        this.strMeasure13 = meal.strMeasure13;
-        this.strMeasure14 = meal.strMeasure14;
-        this.strMeasure15 = meal.strMeasure15;
-        this.strMeasure16 = meal.strMeasure16;
-        this.strMeasure17 = meal.strMeasure17;
-        this.strMeasure18 = meal.strMeasure18;
-        this.strMeasure19 = meal.strMeasure19;
-        this.strMeasure20 = meal.strMeasure20;
-        this.strSource = meal.strSource;
-        this.strImageSource = meal.strImageSource;
-        this.strCreativeCommonsConfirmed = meal.strCreativeCommonsConfirmed;
-        this.dateModified = meal.dateModified;
-        this.date = date;
-    }
-
-    public MealPlanDTO(String idMeal, String strMeal, String strDrinkAlternate, String strCategory, String strArea, String strInstructions, String strMealThumb, String strTags, String strYoutube, String strIngredient1, String strIngredient2, String strIngredient3, String strIngredient4, String strIngredient5, String strIngredient6, String strIngredient7, String strIngredient8, String strIngredient9, String strIngredient10, String strIngredient11, String strIngredient12, String strIngredient13, String strIngredient14, String strIngredient15, String strIngredient16, String strIngredient17, String strIngredient18, String strIngredient19, String strIngredient20, String strMeasure1, String strMeasure2, String strMeasure3, String strMeasure4, String strMeasure5, String strMeasure6, String strMeasure7, String strMeasure8, String strMeasure9, String strMeasure10, String strMeasure11, String strMeasure12, String strMeasure13, String strMeasure14, String strMeasure15, String strMeasure16, String strMeasure17, String strMeasure18, String strMeasure19, String strMeasure20, String strSource, String strImageSource, String strCreativeCommonsConfirmed, String dateModified,String date) {
+    public MealDTO(String idMeal, String strMeal, String strDrinkAlternate, String strCategory, String strArea, String strInstructions, String strMealThumb, String strTags, String strYoutube, String strIngredient1, String strIngredient2, String strIngredient3, String strIngredient4, String strIngredient5, String strIngredient6, String strIngredient7, String strIngredient8, String strIngredient9, String strIngredient10, String strIngredient11, String strIngredient12, String strIngredient13, String strIngredient14, String strIngredient15, String strIngredient16, String strIngredient17, String strIngredient18, String strIngredient19, String strIngredient20, String strMeasure1, String strMeasure2, String strMeasure3, String strMeasure4, String strMeasure5, String strMeasure6, String strMeasure7, String strMeasure8, String strMeasure9, String strMeasure10, String strMeasure11, String strMeasure12, String strMeasure13, String strMeasure14, String strMeasure15, String strMeasure16, String strMeasure17, String strMeasure18, String strMeasure19, String strMeasure20, String strSource, String strImageSource, String strCreativeCommonsConfirmed, String dateModified) {
         this.idMeal = idMeal;
         this.strMeal = strMeal;
         this.strDrinkAlternate = strDrinkAlternate;
@@ -350,7 +230,6 @@ public class MealPlanDTO implements Parcelable {
         this.strImageSource = strImageSource;
         this.strCreativeCommonsConfirmed = strCreativeCommonsConfirmed;
         this.dateModified = dateModified;
-        this.date = date;
     }
 
 
@@ -829,16 +708,9 @@ public class MealPlanDTO implements Parcelable {
     public String getDateModified() {
         return dateModified;
     }
-    public void setDate(String date) {
-        this.date = date;
-    }
-
-    public String getDate() {
-        return date;
-    }
 
 
-    protected MealPlanDTO(Parcel in) {
+    protected MealDTO(Parcel in) {
         idMeal = in.readString();
         strMeal = in.readString();
         strDrinkAlternate = in.readString();
@@ -896,7 +768,7 @@ public class MealPlanDTO implements Parcelable {
         ;
         dateModified = in.readString();
         ;
-        date = in.readString();
+
     }
 
     @Override
@@ -904,15 +776,15 @@ public class MealPlanDTO implements Parcelable {
         return 0;
     }
 
-    public static final Creator<MealPlanDTO> CREATOR = new Creator<MealPlanDTO>() {
+    public static final Creator<MealDTO> CREATOR = new Creator<MealDTO>() {
         @Override
-        public MealPlanDTO createFromParcel(Parcel in) {
-            return new MealPlanDTO(in);
+        public MealDTO createFromParcel(Parcel in) {
+            return new MealDTO(in);
         }
 
         @Override
-        public MealPlanDTO[] newArray(int size) {
-            return new MealPlanDTO[size];
+        public MealDTO[] newArray(int size) {
+            return new MealDTO[size];
         }
     };
 
@@ -971,6 +843,5 @@ public class MealPlanDTO implements Parcelable {
         parcel.writeString(strImageSource);
         parcel.writeString(strCreativeCommonsConfirmed);
         parcel.writeString(dateModified);
-        parcel.writeString(date);
     }
 }

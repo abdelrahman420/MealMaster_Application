@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F0F0F0"
+    android:background="@color/dark_gray"
     tools:context=".view.fragments.search.MainSearchFragment">
 
     <!-- Toolbar -->
@@ -11,9 +11,9 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="#8C5B18"
-        android:elevation="4dp"
-        android:layout_marginTop="25dp">
+        android:layout_marginTop="25dp"
+        android:background="@color/brown"
+        android:elevation="4dp">
 
         <TextView
             android:id="@+id/toolbarTitle"
@@ -22,7 +22,7 @@
             android:layout_gravity="start|center_vertical"
             android:layout_marginStart="16dp"
             android:text="Search"
-            android:textColor="#FFFFFF"
+            android:textColor="@color/white"
             android:textSize="20sp" />
     </androidx.appcompat.widget.Toolbar>
 
@@ -42,7 +42,7 @@
             android:layout_marginBottom="16dp"
             android:background="@drawable/button_background"
             android:text="Search by Name"
-            android:textColor="#FFFFFF" />
+            android:textColor="@color/white" />
 
         <!-- Button: Filter by Category -->
         <Button
@@ -52,7 +52,7 @@
             android:layout_marginBottom="16dp"
             android:background="@drawable/button_background"
             android:text="Filter by Category"
-            android:textColor="#FFFFFF" />
+            android:textColor="@color/white" />
 
         <!-- Button: Filter by Country -->
         <Button
@@ -62,7 +62,7 @@
             android:layout_marginBottom="16dp"
             android:background="@drawable/button_background"
             android:text="Filter by Country"
-            android:textColor="#FFFFFF" />
+            android:textColor="@color/white" />
 
         <!-- Button: Filter by Ingredient -->
         <Button
@@ -72,7 +72,7 @@
             android:layout_marginBottom="16dp"
             android:background="@drawable/button_background"
             android:text="Filter by Ingredient"
-            android:textColor="#FFFFFF" />
+            android:textColor="@color/white" />
 
     </LinearLayout>
 </FrameLayout>

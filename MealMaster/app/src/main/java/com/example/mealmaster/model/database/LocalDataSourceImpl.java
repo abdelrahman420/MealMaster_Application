@@ -7,10 +7,9 @@ import android.widget.Toast;
 
 import androidx.lifecycle.LiveData;
 
-import com.example.mealmaster.model.database.DTOs.MealDTO;
-import com.example.mealmaster.model.database.DTOs.MealPlanDTO;
+import com.example.mealmaster.model.DTOs.MealDTO;
+import com.example.mealmaster.model.DTOs.MealPlanDTO;
 
-import java.util.Collections;
 import java.util.List;
 
 public class LocalDataSourceImpl implements LocalDataSource {
@@ -38,7 +37,6 @@ public class LocalDataSourceImpl implements LocalDataSource {
 
     @Override
     public LiveData<List<MealDTO>> getStoredData() {
-
         return storedFavMeals;
     }
 
@@ -57,33 +55,30 @@ public class LocalDataSourceImpl implements LocalDataSource {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                try{
-                MealDTO existingMeal = favMealDAO.getMealById(meal.getIdMeal());
-                if (existingMeal == null) {
-                    favMealDAO.insertMeal(meal);
-                    new Handler(Looper.getMainLooper()).post(new Runnable() {
-                        @Override
-                        public void run() {
-                            Toast.makeText(context, meal.getStrMeal() + " added to Favourites", Toast.LENGTH_SHORT).show();
-                        }
-                    });
+                try {
+                    MealDTO existingMeal = favMealDAO.getMealById(meal.getIdMeal());
+                    if (existingMeal == null) {
+                        favMealDAO.insertMeal(meal);
+                        new Handler(Looper.getMainLooper()).post(new Runnable() {
+                            @Override
+                            public void run() {
+                                Toast.makeText(context, meal.getStrMeal() + " added to Favourites", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    } else {
+                        new Handler(Looper.getMainLooper()).post(new Runnable() {
+                            @Override
+                            public void run() {
+                                Toast.makeText(context, meal.getStrMeal() + " already exists in favourites", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
-                else {
-                    new Handler(Looper.getMainLooper()).post(new Runnable() {
-                        @Override
-                        public void run() {
-                            Toast.makeText(context, meal.getStrMeal() + " already exists in favourites", Toast.LENGTH_SHORT).show();
-                        }
-                    });
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-
             }
         }).start();
     }
-
     @Override
     public void insertInMealPlan(MealPlanDTO meal) {
         new Thread(new Runnable() {
@@ -96,7 +91,7 @@ public class LocalDataSourceImpl implements LocalDataSource {
                         new Handler(Looper.getMainLooper()).post(new Runnable() {
                             @Override
                             public void run() {
-                                Toast.makeText(context, meal.getStrMeal() + " added to "+meal.getDate(), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(context, meal.getStrMeal() + " added to " + meal.getDate(), Toast.LENGTH_SHORT).show();
                             }
                         });
                     } else {
@@ -113,7 +108,6 @@ public class LocalDataSourceImpl implements LocalDataSource {
             }
         }).start();
     }
-
     @Override
     public void deleteFromMealPlan(MealPlanDTO meal) {
         new Thread(new Runnable() {

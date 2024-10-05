@@ -18,9 +18,8 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.mealmaster.R;
-import com.example.mealmaster.model.database.DTOs.MealDTO;
-import com.example.mealmaster.model.database.DTOs.MealPlanDTO;
-import com.example.mealmaster.model.repsitory.MealRepository;
+import com.example.mealmaster.model.DTOs.MealDTO;
+import com.example.mealmaster.model.DTOs.MealPlanDTO;
 import com.example.mealmaster.view.fragments.meal_details.MealDetailsFragment;
 import com.example.mealmaster.view.fragments.weekly_plan.OnRmvClickListeer;
 
@@ -43,7 +42,7 @@ public class WeeklyPlanAdapter extends RecyclerView.Adapter<WeeklyPlanAdapter.Vi
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.row_meal, parent, false);
+                .inflate(R.layout.item_meal, parent, false);
         return new ViewHolder(view);
     }
 

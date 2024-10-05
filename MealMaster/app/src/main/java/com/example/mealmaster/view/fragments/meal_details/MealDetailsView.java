@@ -1,7 +1,6 @@
 package com.example.mealmaster.view.fragments.meal_details;
 
-import com.example.mealmaster.model.database.DTOs.MealDTO;
-import com.example.mealmaster.model.database.DTOs.MealPlanDTO;
+import com.example.mealmaster.model.DTOs.MealDTO;
 
 public interface MealDetailsView {
     void showMealDetails(MealDTO meal);

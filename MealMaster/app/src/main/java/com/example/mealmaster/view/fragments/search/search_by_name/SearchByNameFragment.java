@@ -9,6 +9,8 @@ import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.Handler;
+import android.os.Looper;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -18,10 +20,10 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.mealmaster.R;
-import com.example.mealmaster.model.database.DTOs.MealDTO;
+import com.example.mealmaster.model.DTOs.MealDTO;
 import com.example.mealmaster.model.database.LocalDataSourceImpl;
 import com.example.mealmaster.model.network.RemoteDataSourceImpl;
-import com.example.mealmaster.model.repsitory.MealRepositoryImpl;
+import com.example.mealmaster.model.repository.MealRepositoryImpl;
 import com.example.mealmaster.presenter.SearchByNamePresenter;
 import com.example.mealmaster.view.adapter.ResultAdapter;
 
@@ -88,19 +90,22 @@ public class SearchByNameFragment extends Fragment implements SearchByNameView{
                 if (searchTimer != null) {
                     searchTimer.cancel();
                 }
-
                 searchTimer = new Timer();
                 searchTimer.schedule(new TimerTask() {
                     @Override
                     public void run() {
                         String query = s.toString().trim();
                         if (!query.isEmpty()) {
-                            getActivity().runOnUiThread(() -> searchByNamePresenter.searchMealsByName(query));
+                            new Handler(Looper.getMainLooper()).post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    searchByNamePresenter.searchMealsByName(query);
+                                }
+                            });
                         }
                     }
-                }, 300); // 300ms delay for debounce
+                }, 300);
             }
-
             @Override
             public void afterTextChanged(Editable s) {}
         });

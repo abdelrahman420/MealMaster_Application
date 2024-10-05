@@ -1,11 +1,10 @@
 package com.example.mealmaster.model.network;
 
-import com.example.mealmaster.model.database.DTOs.AreaListDTO;
-import com.example.mealmaster.model.database.DTOs.CategoriesDTO;
-import com.example.mealmaster.model.database.DTOs.FilterMealDTO;
-import com.example.mealmaster.model.database.DTOs.IngredientDTO;
-import com.example.mealmaster.model.database.DTOs.IngredientListDTO;
-import com.example.mealmaster.model.database.DTOs.MealDTO;
+import com.example.mealmaster.model.DTOs.AreaListDTO;
+import com.example.mealmaster.model.DTOs.CategoriesDTO;
+import com.example.mealmaster.model.DTOs.FilterMealDTO;
+import com.example.mealmaster.model.DTOs.IngredientListDTO;
+import com.example.mealmaster.model.DTOs.MealDTO;
 
 import java.util.List;
 

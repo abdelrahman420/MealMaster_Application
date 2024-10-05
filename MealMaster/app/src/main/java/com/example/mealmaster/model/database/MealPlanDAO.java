@@ -7,7 +7,7 @@ import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 
-import com.example.mealmaster.model.database.DTOs.MealPlanDTO;
+import com.example.mealmaster.model.DTOs.MealPlanDTO;
 
 import java.util.List;
 

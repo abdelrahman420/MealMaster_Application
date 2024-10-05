@@ -16,11 +16,11 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.mealmaster.R;
-import com.example.mealmaster.model.database.DTOs.IngredientListDTO;
-import com.example.mealmaster.model.database.DTOs.MealDTO;
+import com.example.mealmaster.model.DTOs.IngredientListDTO;
+import com.example.mealmaster.model.DTOs.MealDTO;
 import com.example.mealmaster.model.database.LocalDataSourceImpl;
 import com.example.mealmaster.model.network.RemoteDataSourceImpl;
-import com.example.mealmaster.model.repsitory.MealRepositoryImpl;
+import com.example.mealmaster.model.repository.MealRepositoryImpl;
 import com.example.mealmaster.presenter.FilterIngredientPresenter;
 import com.example.mealmaster.view.adapter.IngredientListAdapter;
 import com.example.mealmaster.view.fragments.search.result.ResultFragment;

@@ -16,7 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.mealmaster.R;
-import com.example.mealmaster.model.database.DTOs.MealDTO;
+import com.example.mealmaster.model.DTOs.MealDTO;
 import com.example.mealmaster.view.fragments.favourite_meals.OnFavClickListener;
 import com.example.mealmaster.view.fragments.meal_details.MealDetailsFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;

@@ -4,9 +4,11 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -16,6 +18,7 @@ import com.example.mealmaster.R;
 import com.example.mealmaster.databinding.ActivityMainBinding;
 import com.example.mealmaster.presenter.MainPresenter;
 import com.example.mealmaster.view.fragments.home.HomeFragment;
+import com.google.android.material.navigation.NavigationBarView;
 
 public class MainActivity extends AppCompatActivity implements MainScreenView{
 
@@ -33,10 +36,12 @@ public class MainActivity extends AppCompatActivity implements MainScreenView{
         replaceFragment(new HomeFragment());
 
 
-        binding.navView.setOnItemSelectedListener(item ->
-        {
-            presenter.onNavigationItemSelected(item.getItemId());
-            return true;
+        binding.navView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                presenter.onNavigationItemSelected(item.getItemId());
+                return true;
+            }
         });
 
         ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);

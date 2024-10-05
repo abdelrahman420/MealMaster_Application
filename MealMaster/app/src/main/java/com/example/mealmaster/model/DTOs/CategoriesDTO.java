@@ -1,4 +1,4 @@
-package com.example.mealmaster.model.database.DTOs;
+package com.example.mealmaster.model.DTOs;
 
 import com.google.gson.annotations.SerializedName;
 

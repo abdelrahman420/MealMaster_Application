@@ -1,11 +1,8 @@
 package com.example.mealmaster.presenter;
 
-import com.example.mealmaster.model.database.DTOs.MealDTO;
-import com.example.mealmaster.model.repsitory.MealRepository;
+import com.example.mealmaster.model.DTOs.MealDTO;
+import com.example.mealmaster.model.repository.MealRepository;
 import com.example.mealmaster.view.fragments.favourite_meals.FavFragmentView;
-import com.example.mealmaster.view.fragments.favourite_meals.OnFavClickListener;
-import com.example.mealmaster.view.fragments.home.HomeFragmentView;
-import com.example.mealmaster.view.fragments.home.OnMealCLickListener;
 
 public class FavMealsPresenter {
     private MealRepository mealRepository;

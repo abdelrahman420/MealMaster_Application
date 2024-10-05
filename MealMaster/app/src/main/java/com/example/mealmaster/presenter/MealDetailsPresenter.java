@@ -2,21 +2,14 @@ package com.example.mealmaster.presenter;
 
 import android.app.DatePickerDialog;
 import android.content.Context;
-import android.os.Bundle;
 
 
-import com.example.mealmaster.model.database.DTOs.AreaListDTO;
-import com.example.mealmaster.model.database.DTOs.CategoriesDTO;
-import com.example.mealmaster.model.database.DTOs.FilterMealDTO;
-import com.example.mealmaster.model.database.DTOs.IngredientListDTO;
-import com.example.mealmaster.model.database.DTOs.MealDTO;
-import com.example.mealmaster.model.database.DTOs.MealPlanDTO;
-import com.example.mealmaster.model.network.NetworkCall;
-import com.example.mealmaster.model.repsitory.MealRepository;
+import com.example.mealmaster.model.DTOs.MealDTO;
+import com.example.mealmaster.model.DTOs.MealPlanDTO;
+import com.example.mealmaster.model.repository.MealRepository;
 import com.example.mealmaster.view.fragments.meal_details.MealDetailsView;
 
 import java.util.Calendar;
-import java.util.List;
 
 public class MealDetailsPresenter {
 
@@ -53,7 +46,7 @@ public class MealDetailsPresenter {
                 context,
                 view::onDateSet,
                 year, month, day);
-        datePickerDialog.getDatePicker().setMinDate(startOfWeek.getTimeInMillis());
+        datePickerDialog.getDatePicker().setMinDate(calendar.getTimeInMillis());
         datePickerDialog.getDatePicker().setMaxDate(endOfWeek.getTimeInMillis());
         datePickerDialog.show();
     }

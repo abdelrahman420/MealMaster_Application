@@ -20,10 +20,8 @@ public class MainPresenter {
         this.view = view;
         this.context = context;
     }
-
     public void onNavigationItemSelected(int itemId) {
         Fragment selectedFragment = null;
-
         if (itemId == R.id.fav) {
             selectedFragment = new FavFragment();
         } else if (itemId == R.id.search) {
@@ -34,10 +32,9 @@ public class MainPresenter {
             selectedFragment = new WeeklyPlanFragment();
         } else {
         }
-        // If a fragment is selected, instruct the view to replace the fragment
         if (selectedFragment != null) {
             view.replaceFragment(selectedFragment);
         }
-        }
+    }
 }
 

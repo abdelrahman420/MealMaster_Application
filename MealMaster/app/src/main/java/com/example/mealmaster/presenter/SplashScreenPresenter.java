@@ -5,15 +5,10 @@ import android.os.Handler;
 import com.example.mealmaster.view.activity.splah_screen.SplashScreenView;
 
 public class SplashScreenPresenter {
-
-
         private final SplashScreenView view;
-
         public SplashScreenPresenter(SplashScreenView view) {
             this.view = view;
         }
-
-
         public void startSplashDelay() {
             new Handler().postDelayed(new Runnable() {
                 @Override
@@ -22,5 +17,4 @@ public class SplashScreenPresenter {
                 }
             }, 3000);
         }
-
 }

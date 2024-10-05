@@ -16,11 +16,10 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.mealmaster.R;
-import com.example.mealmaster.model.database.DTOs.MealPlanDTO;
+import com.example.mealmaster.model.DTOs.MealPlanDTO;
 import com.example.mealmaster.model.database.LocalDataSourceImpl;
 import com.example.mealmaster.model.network.RemoteDataSourceImpl;
-import com.example.mealmaster.model.repsitory.MealRepository;
-import com.example.mealmaster.model.repsitory.MealRepositoryImpl;
+import com.example.mealmaster.model.repository.MealRepositoryImpl;
 import com.example.mealmaster.presenter.DayMealsPresenter;
 import com.example.mealmaster.view.adapter.WeeklyPlanAdapter;
 import com.google.android.material.snackbar.Snackbar;

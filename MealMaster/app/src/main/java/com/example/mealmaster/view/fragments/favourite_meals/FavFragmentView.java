@@ -2,7 +2,7 @@ package com.example.mealmaster.view.fragments.favourite_meals;
 
 import androidx.lifecycle.LiveData;
 
-import com.example.mealmaster.model.database.DTOs.MealDTO;
+import com.example.mealmaster.model.DTOs.MealDTO;
 
 import java.util.List;
 

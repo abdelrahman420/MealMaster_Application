@@ -5,8 +5,6 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -17,14 +15,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.mealmaster.R;
-import com.example.mealmaster.model.database.DTOs.MealDTO;
+import com.example.mealmaster.model.DTOs.MealDTO;
 import com.example.mealmaster.model.database.LocalDataSourceImpl;
 import com.example.mealmaster.model.network.RemoteDataSourceImpl;
-import com.example.mealmaster.model.repsitory.MealRepositoryImpl;
+import com.example.mealmaster.model.repository.MealRepositoryImpl;
 import com.example.mealmaster.presenter.FavMealsPresenter;
-import com.example.mealmaster.presenter.HomePresenter;
 import com.example.mealmaster.view.adapter.FavAdapter;
-import com.example.mealmaster.view.fragments.meal_details.MealDetailsFragment;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;

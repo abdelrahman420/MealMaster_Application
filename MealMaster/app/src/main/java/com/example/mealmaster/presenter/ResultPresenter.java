@@ -1,6 +1,6 @@
 package com.example.mealmaster.presenter;
 
-import com.example.mealmaster.model.repsitory.MealRepository;
+import com.example.mealmaster.model.repository.MealRepository;
 import com.example.mealmaster.view.fragments.search.result.ResultView;
 
 public class ResultPresenter {

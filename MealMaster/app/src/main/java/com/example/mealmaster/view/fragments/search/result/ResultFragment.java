@@ -14,10 +14,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.mealmaster.R;
-import com.example.mealmaster.model.database.DTOs.MealDTO;
+import com.example.mealmaster.model.DTOs.MealDTO;
 import com.example.mealmaster.model.database.LocalDataSourceImpl;
 import com.example.mealmaster.model.network.RemoteDataSourceImpl;
-import com.example.mealmaster.model.repsitory.MealRepositoryImpl;
+import com.example.mealmaster.model.repository.MealRepositoryImpl;
 import com.example.mealmaster.presenter.ResultPresenter;
 import com.example.mealmaster.view.adapter.ResultAdapter;
 

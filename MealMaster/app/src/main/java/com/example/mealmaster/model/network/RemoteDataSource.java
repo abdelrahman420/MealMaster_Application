@@ -1,9 +1,5 @@
 package com.example.mealmaster.model.network;
 
-import com.example.mealmaster.model.database.DTOs.MealDTO;
-
-import java.util.List;
-
 public interface RemoteDataSource {
     void searchMealsByName(String mealName, NetworkCall networkCallBack);
     void searchMealsByFirstLetter(char firstLetter, NetworkCall networkCallBack);

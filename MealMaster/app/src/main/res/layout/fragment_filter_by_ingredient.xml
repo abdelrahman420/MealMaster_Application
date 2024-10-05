@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
+    android:backgroundTint="@color/white"
     android:orientation="vertical"
     tools:context=".view.fragments.search.filter_by_category.FilterByCategoryFragment">
 
@@ -11,10 +13,10 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
+        android:layout_marginTop="25dp"
         android:background="#8C5B18"
         android:elevation="4dp"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        android:layout_marginTop="25dp">
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
         <TextView
             android:id="@+id/toolbarTitle"
@@ -23,7 +25,7 @@
             android:layout_gravity="start"
             android:layout_marginStart="16dp"
             android:text="Filter By Ingredient"
-            android:textColor="#FFFFFF"
+            android:textColor="@color/white"
             android:textSize="20sp" />
     </androidx.appcompat.widget.Toolbar>
 
@@ -34,7 +36,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:text="Ingredients"
-        android:textColor="#8C5B18"
+        android:textColor="@color/brown"
         android:textSize="18sp" />
 
     <!-- RecyclerView for Categories -->
@@ -45,6 +47,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginBottom="16dp"
         android:layout_weight="1"
+        android:background="@color/light_gray"
         android:padding="16dp" />
 
 </LinearLayout>

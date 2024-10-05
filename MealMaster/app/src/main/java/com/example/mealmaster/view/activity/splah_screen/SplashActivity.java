@@ -23,7 +23,6 @@ public class SplashActivity extends AppCompatActivity implements SplashScreenVie
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_splash);
-        // Initialize the presenter
         presenter = new SplashScreenPresenter(this);
         presenter.startSplashDelay();
     }
@@ -33,6 +32,5 @@ public class SplashActivity extends AppCompatActivity implements SplashScreenVie
         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(intent);
         finish();
-
     }
 }

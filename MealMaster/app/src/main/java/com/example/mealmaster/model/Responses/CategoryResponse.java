@@ -1,6 +1,6 @@
-package com.example.mealmaster.model.network.Responses;
+package com.example.mealmaster.model.Responses;
 
-import com.example.mealmaster.model.database.DTOs.CategoriesDTO;
+import com.example.mealmaster.model.DTOs.CategoriesDTO;
 
 import java.util.List;
 

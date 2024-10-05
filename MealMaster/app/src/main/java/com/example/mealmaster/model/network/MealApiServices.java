@@ -1,14 +1,13 @@
 package com.example.mealmaster.model.network;
 
-import com.example.mealmaster.model.network.Responses.AreaListResponse;
-import com.example.mealmaster.model.network.Responses.CategoryResponse;
-import com.example.mealmaster.model.network.Responses.FilterMealResponse;
-import com.example.mealmaster.model.network.Responses.IngredientListResponse;
-import com.example.mealmaster.model.network.Responses.MealResponse;
+import com.example.mealmaster.model.Responses.AreaListResponse;
+import com.example.mealmaster.model.Responses.CategoryResponse;
+import com.example.mealmaster.model.Responses.FilterMealResponse;
+import com.example.mealmaster.model.Responses.IngredientListResponse;
+import com.example.mealmaster.model.Responses.MealResponse;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
-import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 

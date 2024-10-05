@@ -1,9 +1,9 @@
-package com.example.mealmaster.model.repsitory;
+package com.example.mealmaster.model.repository;
 
 import androidx.lifecycle.LiveData;
 
-import com.example.mealmaster.model.database.DTOs.MealDTO;
-import com.example.mealmaster.model.database.DTOs.MealPlanDTO;
+import com.example.mealmaster.model.DTOs.MealDTO;
+import com.example.mealmaster.model.DTOs.MealPlanDTO;
 import com.example.mealmaster.model.database.LocalDataSource;
 import com.example.mealmaster.model.network.NetworkCall;
 import com.example.mealmaster.model.network.RemoteDataSource;
@@ -28,15 +28,10 @@ public class MealRepositoryImpl implements MealRepository {
         this.localDataSource = localDataSource;
     }
 
-
-
-
     @Override
     public LiveData<List<MealDTO>> _getStoredMeals() {
         return localDataSource.getStoredData();
     }
-
-
 
     @Override
     public void _insertMeal(MealDTO meal) {
@@ -107,10 +102,8 @@ public class MealRepositoryImpl implements MealRepository {
     public void _deleteFromMealPlan(MealPlanDTO meal) {
         localDataSource.deleteFromMealPlan(meal);
     }
-
     @Override
     public LiveData<List<MealPlanDTO>> _getMealsByDate(String date) {
         return localDataSource.getMealsByDate(date);
     }
-
 }

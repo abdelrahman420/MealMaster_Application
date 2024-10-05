@@ -34,7 +34,7 @@
             android:maxLines="1"
             android:text="Country Name"
             android:textAlignment="viewStart"
-            android:textColor="@android:color/black"
+            android:textColor="@color/black"
             android:textSize="18sp"
             android:textStyle="bold" />
     </LinearLayout>

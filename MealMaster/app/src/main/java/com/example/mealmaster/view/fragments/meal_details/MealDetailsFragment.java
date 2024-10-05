@@ -15,22 +15,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.mealmaster.R;
-import com.example.mealmaster.model.database.DTOs.IngredientDTO;
-import com.example.mealmaster.model.database.DTOs.MealDTO;
-import com.example.mealmaster.model.database.DTOs.MealPlanDTO;
-import com.example.mealmaster.model.database.LocalDataSource;
+import com.example.mealmaster.model.DTOs.IngredientDTO;
+import com.example.mealmaster.model.DTOs.MealDTO;
+import com.example.mealmaster.model.DTOs.MealPlanDTO;
 import com.example.mealmaster.model.database.LocalDataSourceImpl;
 import com.example.mealmaster.model.network.RemoteDataSourceImpl;
-import com.example.mealmaster.model.repsitory.MealRepositoryImpl;
+import com.example.mealmaster.model.repository.MealRepositoryImpl;
 import com.example.mealmaster.presenter.MealDetailsPresenter;
 import com.example.mealmaster.view.adapter.IngredientAdapter;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer;
@@ -41,7 +38,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
-import java.util.Locale;
 
 public class MealDetailsFragment extends Fragment implements MealDetailsView, DatePickerDialog.OnDateSetListener {
     private ImageView mealImage;
@@ -60,7 +56,6 @@ public class MealDetailsFragment extends Fragment implements MealDetailsView, Da
     List<String> ingredientMeasures;
     private Button btnAdd;
     private Button btnPlan;
-    LiveData<List<MealPlanDTO>> meals;
 
     public MealDetailsFragment() {
         // Required empty public constructor
@@ -69,7 +64,7 @@ public class MealDetailsFragment extends Fragment implements MealDetailsView, Da
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        meal = (MealDTO) getArguments().getParcelable("meal");
+        meal = getArguments().getParcelable("meal");
         presenter = new MealDetailsPresenter(this, MealRepositoryImpl.getInstance(RemoteDataSourceImpl.getInstance(), LocalDataSourceImpl.getInstance(getContext())));
     }
 
@@ -161,12 +156,7 @@ public class MealDetailsFragment extends Fragment implements MealDetailsView, Da
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
         Calendar selectedDateCalendar = Calendar.getInstance();
         selectedDateCalendar.set(year, month, dayOfMonth);
-
         String dayName = getDayName(selectedDateCalendar.get(Calendar.DAY_OF_WEEK));
-
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-        String formattedDate = dateFormat.format(selectedDateCalendar.getTime());
-
         MealPlanDTO mealPlan = new MealPlanDTO(meal, dayName);
         presenter.addMealToPlan(mealPlan);
     }
