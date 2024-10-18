@@ -65,7 +65,7 @@ public class SearchByNameFragment extends Fragment implements SearchByNameView{
         searchResultsRecyclerView = view.findViewById(R.id.recyclerViewSearchResults);
         searchBar = view.findViewById(R.id.searchBar);
         mealAdapter = new ResultAdapter( getContext(),new ArrayList<>(),fragmentManager);
-        searchResultsRecyclerView.setLayoutManager(new GridLayoutManager(getContext(), 3)); // Layout manager for search results
+        searchResultsRecyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2)); // Layout manager for search results
         searchResultsRecyclerView.setAdapter(mealAdapter);
         setupSearchBar();
     }
